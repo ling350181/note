@@ -12,5 +12,5 @@
 Dynamically adding a new panel with isExpanded = true, I don't get the expected gap.
 添加一个新的pannel的时候，一个pannel是展开状态的时候(isExpanded = true)，会出现以上报错
 
-暂时可以避免的措施是新添一个pannel的时候，强行把所以展开的pannel给关闭掉(isExpanded = false)
+暂时可以避免的措施是新添一个pannel的时候，强行把所有展开的pannel给关闭掉(isExpanded = false)
 
