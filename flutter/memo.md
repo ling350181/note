@@ -1,5 +1,5 @@
 - [ExpansionPanel踩坑点](#ExpansionPanel)
-- [Looking up a deactivated widget's ancestor is unsafe](#Looking up a deactivated widget's ancestor is unsafe)
+- [Looking up a deactivated widget's ancestor is unsafe](#小部件祖先不安全)
 
 # ExpansionPanel
 
@@ -15,7 +15,7 @@ Dynamically adding a new panel with isExpanded = true, I don't get the expected 
 
 暂时可以避免的措施是新添一个pannel的时候，强行把所有展开的pannel给关闭掉(isExpanded = false)
 
-# Looking up a deactivated widget's ancestor is unsafe
+# 小部件祖先不安全
 >Looking up a deactivated widget's ancestor is unsafe
 
 解决方法：
