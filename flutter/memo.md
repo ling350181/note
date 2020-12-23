@@ -18,7 +18,11 @@ Dynamically adding a new panel with isExpanded = true, I don't get the expected 
 # 小部件祖先不安全
 >Looking up a deactivated widget's ancestor is unsafe
 
-解决方法：
+### 原因
+找不到靠谱的上下文，也就是所传递的上下文无效了。
+由于context已经被销毁，变得不可用。请检测后面执行的代码是否依赖了销毁的context。
+
+### 解决方法：
 1. 定义一个global参数
 ``` dart
  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();

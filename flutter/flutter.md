@@ -77,7 +77,7 @@ showOverlay(BuildContext context) {
   }
 ```
 
-3. 控件现实的俩种方式
+3. 控件实现的俩种方式
     1. 通过外部插件keyboard_visibility
     ``` dart
     KeyboardVisibilityNotification().addNewlistener(
