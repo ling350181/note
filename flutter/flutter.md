@@ -235,8 +235,8 @@ decoration: new UnderlineTabIndicator(
 
 # 多语言国际化
 
-- [中文官方文档](#https://book.flutterchina.club/chapter13/multi_languages_support.html)
-- [参考教程](#https://blog.csdn.net/zhongad007/article/details/106470787/)
+- [中文官方文档](https://book.flutterchina.club/chapter13/multi_languages_support.html)
+- [参考教程](https://blog.csdn.net/zhongad007/article/details/106470787/)
 
 1. 在pubspec.yaml添加依赖
 ``` dart
@@ -286,6 +286,16 @@ supportedLocales: [
   - localeResolutionCallback
   当前设备的语言
 
+```dart
+//  语言环境列表解析回调
+localeListResolutionCallback:(List<Locale> locales, Iterable<Locale> supportedLocales){
+  ...
+} ,
+//  语言环境列表解析回调
+localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales){
+  ...
+},
+```
 4. 创建本地化类
 
 该类用于定义我们需要进行本地化的字符串等信息：
