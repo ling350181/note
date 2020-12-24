@@ -3,6 +3,7 @@
 - [ExpansionPanelList](#ExpansionPanelList)
 - [定义键盘按钮](#键盘自定义按钮)
 - [Decoration背景设定](#Decoration背景设定)
+- [多语言国际化](#多语言国际化)
 
 
 
@@ -231,6 +232,156 @@ decoration: new UnderlineTabIndicator(
   insets: EdgeInsets.fromLTRB(0,0,0,10)
 ),
 ```
+
+# 多语言国际化
+
+- [中文官方文档](#https://book.flutterchina.club/chapter13/multi_languages_support.html)
+- [参考教程](#https://blog.csdn.net/zhongad007/article/details/106470787/)
+
+1. 在pubspec.yaml添加依赖
+``` dart
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations: # Add this line
+    sdk: flutter         # Add this line
+```
+2. 设置MaterialApp
+``` dart
+MaterialApp(
+  theme: ThemeData(
+    primarySwatch: Colors.pink,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+    ),
+    home: TabBarPage(),
+    localizationsDelegates: [
+      GlobalCupertinoLocalizations.delegate,// 对应的Cupertino风格
+      GlobalMaterialLocalizations.delegate,// 指定本地化的字符串和一些其他的值
+      GlobalWidgetsLocalizations.delegate,// 指定默认的文本排列方向, 由左到右或由右到左
+      SimpleLocalizationDelegate.delegate// 自定义国际化内容
+    ],
+    supportedLocales: [
+      const Locale("zh","CN"),
+      const Locale("ja","JP"),
+      const Locale("en","US")
+    ],
+),
+```
+
+注意：如果要指定语言代码、文字代码和国家代码，可以进行如下指定方式：
+``` dart
+// Full Chinese support for CN, TW, and HK
+supportedLocales: [
+  const Locale.fromSubtags(languageCode: 'zh'), // generic Chinese 'zh'
+  const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'), // generic simplified Chinese 'zh_Hans'
+  const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'), // generic traditional Chinese 'zh_Hant'
+  const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans', countryCode: 'CN'), // 'zh_Hans_CN'
+  const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'TW'), // 'zh_Hant_TW'
+  const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant', countryCode: 'HK'), // 'zh_Hant_HK'
+```
+
+3. 获取设备语言
+  - localeListResolutionCallback
+  设备支持的语言
+  - localeResolutionCallback
+  当前设备的语言
+
+4. 创建本地化类
+
+该类用于定义我们需要进行本地化的字符串等信息：
+- 我们需要一个构造器，并且传入一个Locale对象（后续会使用到）
+- 定义一个Map，其中存放我们不同语言对应的显示文本
+- 定义它们对应的getter方法，根据语言环境返回不同的结果
+
+``` dart
+class SimpleLocalizations{
+
+  final Locale locale;
+
+  SimpleLocalizations(this.locale);
+
+  // 添加静态方法，方便使用
+  static SimpleLocalizations of(BuildContext context){
+    return Localizations.of<SimpleLocalizations>(context, SimpleLocalizations);
+  }
+  static Map<String, Map<String, dynamic>> _localizedValues = {
+    "en": {
+      "title": "home",
+      "greet": "hello~",
+      "picktime": "Pick a Time"
+    },
+    "zh": {
+      "title": "首页",
+      "greet": "你好~",
+      "picktime": "选择一个时间"
+    }
+  };
+
+  Map<String,dynamic> get _stringMap{
+    return _localizedValues[locale.languageCode];
+  }
+
+  String get title {
+    return _stringMap["title"];
+  }
+
+  String get greet {
+    return _stringMap["greet"];
+  }
+
+  String get pickTime {
+    return _stringMap["picktime"];
+  }
+}
+```
+5. 自定义Delegate
+
+
+``` dart
+class SimpleLocalizationDelegate extends LocalizationsDelegate<SimpleLocalizations>{
+
+  const SimpleLocalizationDelegate();
+  
+  @override
+  bool isSupported(Locale locale) {
+    return ["zh","ja","en"].contains(locale.languageCode);
+  }
+
+  @override
+  Future<SimpleLocalizations> load(Locale locale) {
+    return SynchronousFuture<SimpleLocalizations>(SimpleLocalizations(locale));
+  }
+
+  @override
+  bool shouldReload(covariant LocalizationsDelegate<SimpleLocalizations> old) {
+    return false;
+  }
+
+  static SimpleLocalizationDelegate delegate = const SimpleLocalizationDelegate();
+  
+}
+```
+
+6. 使用
+
+在SimpleLocalizations中定义静态方法，方便调用
+
+``` dart
+  static SimpleLocalizations of(BuildContext context){
+    return Localizations.of<SimpleLocalizations>(context, SimpleLocalizations);
+  }
+```
+方法调用
+``` dart
+// 静态方法
+SimpleLocalizations.of(context).title;
+// 自定义语言
+SimpleLocalizations(Locale(langageCode)).title;
+```
+
+
+
+
 
 
 
