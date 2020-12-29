@@ -1,5 +1,5 @@
 ### 命令面板
-command + shift + P(Windows: Ctrl + Shift + P)或者F1现实命令面板
+command + shift + P(Windows: Ctrl + Shift + P)或者F1显示命令面板
 
 ### 光标移动
 1. 移动到单词的最前面：option + ←
