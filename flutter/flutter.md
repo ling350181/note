@@ -5,6 +5,7 @@
 - [Decoration背景设定](#Decoration背景设定)
 - [多语言国际化](#多语言国际化)
 - [TextField](#TextField)
+- [sqflite](#sqflite)
 
 
 
@@ -392,6 +393,11 @@ SimpleLocalizations(Locale(langageCode)).title;
 # TextField
 
 - 详解文档(https://blog.csdn.net/yuzhiqiang_1993/article/details/88204031)
+
+# sqflite
+
+- 日文依赖库文档(https://flutter.ctrnost.com/logic/sqlite/)
+- sqflite使用demo(https://blog.csdn.net/weixin_39852620/article/details/103332636)
 
 
 
