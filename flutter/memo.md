@@ -1,5 +1,6 @@
 - [ExpansionPanel踩坑点](#ExpansionPanel)
 - [Looking up a deactivated widget's ancestor is unsafe](#小部件祖先不安全)
+- [firebase_core_web not found. Please update settings.gradle](#firebase_core_web找不到)
 
 # ExpansionPanel
 
@@ -41,5 +42,30 @@ showDialog(context: _scaffoldKey.currentContext ,builder: (context){
   return dialog;
  });
 }
+```
+
+# firebase_core_web找不到
+
+有Admob广告时，安卓build会出现以下错误
+``` log
+Plugin project :firebase_core_web not found. Please update settings.gradle.
+```
+
+[android] -> [settings.gradle]文件打开，追加下列代码
+
+``` gradle
+def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
+
+def plugins = new Properties()
+def pluginsFile = new File(flutterProjectRoot.toFile(), '.flutter-plugins')
+if (pluginsFile.exists()) {
+    pluginsFile.withReader('UTF-8') { reader -> plugins.load(reader) }
+}
+
+plugins.each { name, path ->
+    def pluginDirectory = flutterProjectRoot.resolve(path).resolve('android').toFile()
+    include ":$name"
+    project(":$name").projectDir = pluginDirectory
+} 
 ```
 
