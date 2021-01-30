@@ -4,6 +4,7 @@
 - [定义键盘按钮](#键盘自定义按钮)
 - [Decoration背景设定](#Decoration背景设定)
 - [多语言国际化](#多语言国际化)
+- [app名字本地化](#app名字本地化)
 - [TextField](#TextField)
 - [sqflite](#sqflite)
 
@@ -390,6 +391,33 @@ SimpleLocalizations.of(context).title;
 // 自定义语言
 SimpleLocalizations(Locale(langageCode)).title;
 ```
+
+# app名字本地化
+
+## ios
+- 教程(https://blog.csdn.net/qq_39860954/article/details/84568609)
+
+## Android
+
+- 打开文件：android\app\src\main\AndroidManifest.xml 
+  修改：android:label="@string/app_name"
+
+- 然后在 android\app\src\main\res 下面，新建对应的文件夹，并放入一个strings.xml即可。
+  比如  
+  values-zh/strings.xml 
+
+  values-en/strings.xml
+
+- string.xml内容如下
+
+``` xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">你的应用名字</string>
+</resources>
+```
+
+
 # TextField
 
 - 详解文档(https://blog.csdn.net/yuzhiqiang_1993/article/details/88204031)
