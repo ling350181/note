@@ -14,6 +14,85 @@
 - [本地通知的例子](https://bitbucket.org/vipinvijayan1987/tutorialprojects/src/LocalNotifications/FlutterTutorialProjects/flutter_demos)
 - [教学视频](https://itnext.io/local-notifications-in-flutter-6136235e1b51)
 
+## ios
+- 配置
+
+  AppDelegate.m / AppDelegate.swift文件的didFinishLaunchingWithOptions方法添加以下语句
+
+Objective-C：
+``` Objective-C
+if (@available(iOS 10.0, *)) {
+  [UNUserNotificationCenter currentNotificationCenter].delegate = (id<UNUserNotificationCenterDelegate>) self;
+}
+```
+
+swift:
+``` swift
+if #available(iOS 10.0, *) {
+  UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+}
+```
+
+例：
+``` swift
+import UIKit
+import Flutter
+
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate {
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    GeneratedPluginRegistrant.register(with: self)
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+    }
+    
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+}
+
+```
+
+
+
+## Android
+- 配置  
+  文件：android\app\src\main\AndroidManifest.xml 
+
+  [sample](https://bitbucket.org/vipinvijayan1987/tutorialprojects/src/LocalNotifications/FlutterTutorialProjects/flutter_demos/android/app/src/main/AndroidManifest.xml)
+``` xml
+# 端末が起動されたときに通知を受ける権限を要求する
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+# ~~~
+# 再起動時およびアプリケーションの更新後も通知のスケジュールを確実に維  持するために必要
+<receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+    <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+    </intent-filter>
+</receiver>
+
+# ~~~
+# プラグインがスケジュールされた通知の表示を処理するために必要
+<receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+
+# ~~~
+# (省略可)Android通知のバイブレーションパターンをカスタマイズする場合に必要
+<uses-permission android:name="android.permission.VIBRATE" />
+```
+
+- icon设置
+  - Android Studio打开安卓工程
+  - android/app/src/main/res > 右键 > New > Image Asset
+  - 个人更喜欢直接用lancher图片
+  
+    本地通知安卓配置代码
+     ``` dart
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+    ```
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -400,7 +479,7 @@ SimpleLocalizations(Locale(langageCode)).title;
 ## Android
 
 - 打开文件：android\app\src\main\AndroidManifest.xml 
-  修改：android:label="@string/app_name"
+  修改：android:label="@strings/app_name"
 
 - 然后在 android\app\src\main\res 下面，新建对应的文件夹，并放入一个strings.xml即可。
   比如  
