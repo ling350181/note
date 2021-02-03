@@ -1,6 +1,7 @@
 - [ExpansionPanel踩坑点](#ExpansionPanel)
 - [Looking up a deactivated widget's ancestor is unsafe](#小部件祖先不安全)
 - [firebase_core_web not found. Please update settings.gradle](#firebase_core_web找不到)
+- [flutter_localizations闪退](#flutter_localizations闪退)
 
 # ExpansionPanel
 
@@ -69,3 +70,50 @@ plugins.each { name, path ->
 } 
 ```
 
+# flutter_localizations闪退
+
+本地通知用第三方插件flutter_localizations时出现闪退，出现下列error
+
+``` log
+E/AndroidRuntime(30847): java.lang.RuntimeException: Unable to start receiver com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.Integer.intValue()' on a null object reference
+E/AndroidRuntime(30847): 	at android.app.ActivityThread.handleReceiver(ActivityThread.java:4072)
+E/AndroidRuntime(30847): 	at android.app.ActivityThread.access$1600(ActivityThread.java:240)
+E/AndroidRuntime(30847): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2067)
+E/AndroidRuntime(30847): 	at android.os.Handler.dispatchMessage(Handler.java:107)
+E/AndroidRuntime(30847): 	at android.os.Looper.loop(Looper.java:238)
+E/AndroidRuntime(30847): 	at android.app.ActivityThread.main(ActivityThread.java:7864)
+E/AndroidRuntime(30847): 	at java.lang.reflect.Method.invoke(Native Method)
+E/AndroidRuntime(30847): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:492)
+E/AndroidRuntime(30847): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:998)
+E/AndroidRuntime(30847): Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.Integer.intValue()' on a null object reference
+E/AndroidRuntime(30847): 	at com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin.setSmallIcon(FlutterLocalNotificationsPlugin.java:228)
+E/AndroidRuntime(30847): 	at com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin.createNotification(FlutterLocalNotificationsPlugin.java:174)
+E/AndroidRuntime(30847): 	at com.dexterous.flutterlocalnotifications.FlutterLocalNotificationsPlugin.showNotification(FlutterLocalNotificationsPlugin.java:767)
+E/AndroidRuntime(30847): 	at com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver.onReceive(ScheduledNotificationReceiver.java:46)
+E/AndroidRuntime(30847): 	at android.app.ActivityThread.handleReceiver(ActivityThread.java:4056)
+```
+
+该错误是初期化安卓本地通知时，插件找不到icon所致。即使安卓设置时有初期化，不知为何还是会出现以上错误
+
+- 安卓设置初期化
+
+``` dart
+var initializationSettingsAndroid =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+```
+
+- 解决方法如下：
+
+``` dart
+var androidChannelSpecifics = AndroidNotificationDetails(
+  'CHANNEL_ID 4',
+  'CHANNEL_NAME 4',
+  "CHANNEL_DESCRIPTION 4",
+  importance: Importance.max,
+  icon: "@mipmap/ic_launcher",// 设置icon
+  priority: Priority.high,
+);
+var iOSChannelSpecifics = IOSNotificationDetails();
+var platformChannelSpecifics =
+NotificationDetails(android: androidChannelSpecifics,iOS: iOSChannelSpecifics);
+```
