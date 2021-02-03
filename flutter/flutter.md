@@ -479,13 +479,15 @@ SimpleLocalizations(Locale(langageCode)).title;
 ## Android
 
 - 打开文件：android\app\src\main\AndroidManifest.xml 
-  修改：android:label="@strings/app_name"
+  修改：android:label="@string/app_name"
 
 - 然后在 android\app\src\main\res 下面，新建对应的文件夹，并放入一个strings.xml即可。
   比如  
   values-zh/strings.xml 
 
   values-en/strings.xml
+
+  ※默认文件的values里values/strings.xml的添加莫忘！否则会出错
 
 - string.xml内容如下
 
