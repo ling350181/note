@@ -5,6 +5,7 @@
 - [Decoration背景设定](#Decoration背景设定)
 - [多语言国际化](#多语言国际化)
 - [app名字本地化](#app名字本地化)
+- [安卓版本发布](#安卓版本发布)
 - [TextField](#TextField)
 - [sqflite](#sqflite)
 
@@ -497,6 +498,18 @@ SimpleLocalizations(Locale(langageCode)).title;
     <string name="app_name">你的应用名字</string>
 </resources>
 ```
+
+# 安卓版本发布
+
+- 版本号管理
+  - build-name=版本名
+  - build-number=版本号
+
+  用以下代码打包
+
+  ``` cmd
+  flutter build apk --build-name=1.0.1 --build-number=2
+  ```
 
 
 # TextField
