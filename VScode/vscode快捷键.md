@@ -10,6 +10,7 @@ command + shift + P(Windows: Ctrl + Shift + P)或者F1显示命令面板
 6. 移动到当前行最末尾：cmd + →
 7. 花括号之间跳转：cmd + shift +
 8. 移动到文档第一行或最后一行：cmd + ↑ / cmd + ↓
+9. 多行选择编辑：option + shift + 鼠标
 
 ### 文本选择
 基于单词，行，文档的光标操作加上个shift键，就可以移动光标的同时选择文本；例如，选择当前光标所在位置到当前行最前面的代码：cmd + ← + shift
