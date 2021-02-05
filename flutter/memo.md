@@ -2,6 +2,7 @@
 - [Looking up a deactivated widget's ancestor is unsafe](#小部件祖先不安全)
 - [firebase_core_web not found. Please update settings.gradle](#firebase_core_web找不到)
 - [flutter_localizations闪退](#flutter_localizations闪退)
+- [local_auth插件个人特征验证](#local_auth插件个人特征验证)
 
 # ExpansionPanel
 
@@ -116,4 +117,38 @@ var androidChannelSpecifics = AndroidNotificationDetails(
 var iOSChannelSpecifics = IOSNotificationDetails();
 var platformChannelSpecifics =
 NotificationDetails(android: androidChannelSpecifics,iOS: iOSChannelSpecifics);
+```
+
+# local_auth插件个人特征验证
+
+- local插件出现以下错误
+
+``` log
+PlatformException(no_fragment_activity, local_auth plugin requires activity to be a FragmentActivity
+```
+- 初始Mainactivity.kt
+``` kt
+package com.example.bio_met
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
+```
+
+- 替换为下列文件
+``` kt
+package //your package name for eg.com.example.filename
+
+import androidx.annotation.NonNull;
+import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.android.FlutterFragmentActivity
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugins.GeneratedPluginRegistrant
+
+class MainActivity: FlutterFragmentActivity() {
+    override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine){
+        GeneratedPluginRegistrant.registerWith(flutterEngine);
+    }
+}
 ```
