@@ -3,6 +3,7 @@
 - [firebase_core_web not found. Please update settings.gradle](#firebase_core_web找不到)
 - [flutter_localizations闪退](#flutter_localizations闪退)
 - [local_auth插件个人特征验证](#local_auth插件个人特征验证)
+- [The method 'findAncestorStateOfType' was called on null.](#BuildContext为空)
 
 # ExpansionPanel
 
@@ -152,3 +153,10 @@ class MainActivity: FlutterFragmentActivity() {
     }
 }
 ```
+
+# BuildContext为空
+``` dart
+ Unhandled Exception: NoSuchMethodError: The method 'findAncestorStateOfType' was called on null.
+ ```
+
+ 通常是由于传入的buildContext为空导致的。
