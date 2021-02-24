@@ -4,6 +4,7 @@
 - [flutter_localizations闪退](#flutter_localizations闪退)
 - [local_auth插件个人特征验证](#local_auth插件个人特征验证)
 - [The method 'findAncestorStateOfType' was called on null.](#BuildContext为空)
+- [google ads更换版本是出现build失败的情况](#谷歌广告build失败)
 
 # ExpansionPanel
 
@@ -160,3 +161,28 @@ class MainActivity: FlutterFragmentActivity() {
  ```
 
  通常是由于传入的buildContext为空导致的。
+
+ # 谷歌广告build失败
+
+ - 原因
+
+    AdMob最近将其SDK更新至8.0.0。通过固定Google-Mobile-Ads-SDK到Podfile中的7.69.0版
+
+Podfile
+ ``` pod
+...
+target 'Runner' do
+  use_frameworks!
+  use_modular_headers!
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+
+  # Try adding this
+  pod 'Google-Mobile-Ads-SDK', '~> 7.69.0'
+end
+```
+- 运行以下步骤
+1. Add to Podfile: pod 'Google-Mobile-Ads-SDK', '~> 7.69.0'
+2. Delete Podfile.lock
+3. Run: pod install
+4. flutter run
