@@ -15,6 +15,7 @@
 - [flutter踩坑点](./flutter/memo.md)
 
 # git
+- [git](./git/git.md)
 - [git command](https://qiita.com/konweb/items/621722f67fdd8f86a017)
 
 
