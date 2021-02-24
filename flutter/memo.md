@@ -4,7 +4,7 @@
 - [flutter_localizations闪退](#flutter_localizations闪退)
 - [local_auth插件个人特征验证](#local_auth插件个人特征验证)
 - [The method 'findAncestorStateOfType' was called on null.](#BuildContext为空)
-- [google ads更换版本是出现build失败的情况](#谷歌广告build失败)
+- [google ads更换版本时出现build失败的情况](#谷歌广告build失败)
 
 # ExpansionPanel
 
@@ -186,3 +186,5 @@ end
 2. Delete Podfile.lock
 3. Run: pod install
 4. flutter run
+
+- [参考](https://github.com/FirebaseExtended/flutterfire/issues/4931)
