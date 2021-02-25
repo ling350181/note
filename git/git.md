@@ -1,5 +1,5 @@
 - [submodule](#submodule)
-
+- [复原文件](#复原文件)
 # submodule
 
 - 新建flutter工程
@@ -14,3 +14,16 @@ flutter create --org com.xunjin --template=plugin --platforms=android,ios -a kot
 - 追加对象的路径内
 
 git submodule add https://github.com/ling350181/flutter_customize_calendar.git
+
+# 复原文件
+
+- 取commit id
+``` cmd
+$ git log
+```
+
+- 复原文件
+``` cmd
+$ git checkout commitid 文件名
+```
+※复原删除文件时，应寻删除之前的commitid
