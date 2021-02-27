@@ -5,6 +5,7 @@
 - [local_auth插件个人特征验证](#local_auth插件个人特征验证)
 - [The method 'findAncestorStateOfType' was called on null.](#BuildContext为空)
 - [google ads更换版本时出现build失败的情况](#谷歌广告build失败)
+- [ios发布时Archive失败但是可以build成功](#ios发布时Archive失败)
 
 # ExpansionPanel
 
@@ -188,3 +189,28 @@ end
 4. flutter run
 
 - [参考](https://github.com/FirebaseExtended/flutterfire/issues/4931)
+
+# ios发布时Archive失败
+
+- 现象
+  
+  可以正常build成功,但是发布Archive时，失败了，尝试了以下方法重新build，还是Archive失败
+  
+  ``` cmd
+  $flutter clean
+  $rm ios/podfile.lock
+  $rm ios/podfile
+  $pod update
+  $flutter pub get
+  ```
+
+- log
+  ``` log
+  module 'firebase_admob' not found
+  ```
+
+- 原因
+
+  ios Archive打开的是Runner.xcodeproj，所以出现以上错误，应该打开Runner.xcworkspace，就解决问题了。
+
+
