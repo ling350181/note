@@ -12,8 +12,9 @@ flutter create --org com.xunjin --template=plugin --platforms=android,ios -a kot
 ```
 
 - 追加对象的路径内
-
+``` cmd
 git submodule add https://github.com/ling350181/flutter_customize_calendar.git
+```
 
 # 复原文件
 
