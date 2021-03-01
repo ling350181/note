@@ -12,6 +12,7 @@
 
 # flutter
 - [flutter控件](./flutter/flutter.md)
+- [flutter知识](./flutter/information.md)
 - [flutter踩坑点](./flutter/memo.md)
 
 # git
