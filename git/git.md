@@ -16,6 +16,11 @@ flutter create --org com.xunjin --template=plugin --platforms=android,ios -a kot
 git submodule add https://github.com/ling350181/flutter_customize_calendar.git
 ```
 
+- 删除submodule
+``` cmd
+git submodule deinit -f flutter_customize_calendar
+git rm -f flutter_customize_calendar   
+```
 # 复原文件
 
 - 取commit id
