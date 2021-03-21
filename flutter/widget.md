@@ -1,7 +1,7 @@
 - [ExpansionPanelList](#ExpansionPanelList)
 - [TextField](#TextField)
 - [Decoration背景设定](#Decoration背景设定)
-- [Row、Column](#Row、Column)
+- [Row和Column](#Row和Column)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -136,8 +136,7 @@ decoration: new UnderlineTabIndicator(
 ),
 ```
 
-# Row、Column
-
+# Row和Column
 ## 常用属性
 
 - crossAxisAlignment：子组件沿着 Cross 轴（在 Row 中是纵轴）如何摆放，其实就是子组件对齐方式，可选值有：
