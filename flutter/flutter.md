@@ -1,10 +1,7 @@
 
 - [本地通知](#本地通知)
-- [ExpansionPanelList](#ExpansionPanelList)
 - [定义键盘按钮](#键盘自定义按钮)
-- [Decoration背景设定](#Decoration背景设定)
 - [多语言国际化](#多语言国际化)
-- [TextField](#TextField)
 - [sqflite](#sqflite)
 
 
@@ -92,10 +89,6 @@ import Flutter
      ``` dart
     AndroidInitializationSettings('@mipmap/ic_launcher');
     ```
-
-# ExpansionPanelList
-- [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
-- [踩坑点](./memo.md)
 
 # 键盘自定义按钮
 
@@ -188,131 +181,6 @@ showOverlay(BuildContext context) {
 > Looking up a deactivated widget's ancestor is unsafe
 
 参照[踩坑点记录来解决](./memo.md#小部件祖先不安全)
-
-
-# Decoration背景设定
-- BoxDecoration:实现边框、圆角、阴影、形状、渐变、背景图像
-
-- ShapeDecoration:实现四个边分别指定颜色和宽度、底部线、矩形边色、圆形边色、体育场（竖向椭圆）、 角形（八边角）边色
-
-- FlutterLogoDecoration:实现Flutter图片
-
-- UnderlineTabindicator:下划线
-
-1. BoxDecoration例子
-``` dart
-const BoxDecoration({
-    this.color, // 底色
-    this.image, // 图片
-    this.border, 边色
-    this.borderRadius, // 圆角度
-    this.boxShadow, // 阴影
-    this.gradient, // 渐变
-    this.backgroundBlendMode, // 混合Mode
-    this.shape = BoxShape.rectangle,  // 形状
-  })
-```
-2. 边框+圆角
-``` dart
-decoration: new BoxDecoration(
-  border: new Border.all(color: Color(0xFFFF0000), width: 0.5), // 边色与边宽度
-  color: Color(0xFF9E9E9E), // 底色
-  //        borderRadius: new BorderRadius.circular((20.0)), // 圆角度
-  borderRadius: new BorderRadius.vertical(top: Radius.elliptical(20, 50)), // 也可控件一边圆角大小
-),
-```
-
-3. 阴影
-``` dart
-
-decoration: new BoxDecoration(
-    border: new Border.all(color: Color(0xFFFF0000), width: 0.5), // 边色与边宽度
-// 生成俩层阴影，一层绿，一层黄， 阴影位置由offset决定,阴影模糊层度由blurRadius大小决定（大就更透明更扩散），阴影模糊大小由spreadRadius决定
-    boxShadow: [
-      BoxShadow(
-        color: Color(0x99FFFF00),
-        offset: Offset(5.0, 5.0),    
-        blurRadius: 10.0, spreadRadius: 2.0)
-       ],
-),
-```
-
-4. 形状（圆形与矩形）
-``` dart
-decoration: new BoxDecoration(
-  border: new Border.all(color: Color(0xFFFFFF00), width: 0.5), // 边色与边宽度
-  color: Color(0xFF9E9E9E), // 底色
-  //        shape: BoxShape.circle, // 圆形，使用圆形时不可以使用borderRadius
-  shape: BoxShape.rectangle, // 默认值也是矩形
-  borderRadius: new BorderRadius.circular((20.0)), // 圆角度
-),
-```
-
-5. 渐变（环形、扫描式、线性）
-``` dart
-decoration: new BoxDecoration(
-  border: new Border.all(color: Color(0xFFFFFF00), width: 0.5), // 边色与边宽度
-// 环形渲染
-  gradient: RadialGradient(colors: [Color(0xFFFFFF00), Color(0xFF00FF00), Color(0xFF00FFFF)],radius: 1, tileMode: TileMode.mirror)
-//扫描式渐变
-//        gradient: SweepGradient(colors: [Color(0xFFFFFF00), Color(0xFF00FF00), Color(0xFF00FFFF)], startAngle: 0.0, endAngle: 1*3.14)
-// 线性渐变
-//        gradient: LinearGradient(colors: [Color(0xFFFFFF00), Color(0xFF00FF00), Color(0xFF00FFFF)], begin: FractionalOffset(1, 0), end: FractionalOffset(0, 1))
-),
-```
-
-6. 背景图像
-```dart
-
-decoration: new BoxDecoration(
-  border: new Border.all(color: Color(0xFFFFFF00), width: 0.5), // 边色与边宽度
-  image: new DecorationImage(
-  image: new NetworkImage('https://avatar.csdn.net/8/9/A/3_chenlove1.jpg'), // 网络图片
-  // image: new AssetImage('graphics/background.png'), 本地图片
-  fit: BoxFit.fill // 填满
-  //          centerSlice: new Rect.fromLTRB(270.0, 180.0, 1360.0, 730.0),// 固定大小
-  ),
-```
-
-7. ShapeDecoration例子
-  - 构造方法
-  ``` dart
-const ShapeDecoration({
-  this.color,
-  this.image,
-  this.gradient,
-  this.shadows,
-  @required this.shape,
-})
-  ```
-  - 例子
-  ``` dart
-  decoration: new ShapeDecoration(
-  color: Color(0xFFFF00FF), // 底色
-  // 统一四边颜色和宽度
-  shape: Border.all(color: Color(0xFF00FFFF),style: BorderStyle.solid,width: 2)
-// 四个边分别指定颜色和宽度， 当只给bottom时与UnderlineInputBorder一致效果
-//          shape: Border(top: b, bottom: b, right: b, left: b)
-// 底部线
-//          shape: UnderlineInputBorder( borderSide:BorderSide(color: Color(0xFFFFFFFF), style: BorderStyle.solid, width: 2))
-// 矩形边色
-//        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFFFFFFF), style: BorderStyle.solid, width: 2))
-// 圆形边色
-//        shape: CircleBorder(side: BorderSide(color: Color(0xFFFFFF00), style: BorderStyle.solid, width: 2))
-// 体育场（竖向椭圆）
-//        shape: StadiumBorder(side: BorderSide(width: 2, style: BorderStyle.solid, color: Color(0xFF00FFFF))
-// 角形（八边角）边色
-//          shape: BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFFFFFFF), style: BorderStyle.solid, width: 2))
-),
-  ```
-
-8. UnderlineTabindicator
-``` dart
-decoration: new UnderlineTabIndicator(
-  borderSide: BorderSide(width: 2.0, color: Colors.white),
-  insets: EdgeInsets.fromLTRB(0,0,0,10)
-),
-```
 
 # 多语言国际化
 
@@ -469,10 +337,6 @@ SimpleLocalizations.of(context).title;
 // 自定义语言
 SimpleLocalizations(Locale(langageCode)).title;
 ```
-
-# TextField
-
-- 详解文档(https://blog.csdn.net/yuzhiqiang_1993/article/details/88204031)
 
 # sqflite
 

@@ -11,7 +11,8 @@
 - [快捷键](./VScode/vscode快捷键.md)
 
 # flutter
-- [flutter控件](./flutter/flutter.md)
+- [flutter控件](./flutter/widget.md)
+- [flutter插件](./flutter/flutter.md)
 - [flutter知识](./flutter/information.md)
 - [flutter踩坑点](./flutter/memo.md)
 
