@@ -1,7 +1,7 @@
 - [ExpansionPanelList](#ExpansionPanelList)
 - [TextField](#TextField)
 - [Decoration背景设定](#Decoration背景设定)
-- [Row/Column](#Row/Column)
+- [Row、Column](#Row、Column)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -136,7 +136,7 @@ decoration: new UnderlineTabIndicator(
 ),
 ```
 
-# Row/Column
+# Row、Column
 
 ## 常用属性
 
