@@ -2,6 +2,7 @@
 - [TextField](#TextField)
 - [Decoration背景设定](#Decoration背景设定)
 - [Row和Column](#Row和Column)
+- [PageView](#PageView)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -160,3 +161,50 @@ decoration: new UnderlineTabIndicator(
     - up：从bottom到top进行布局。
 ## 参考文档
 - [Flutter 基础组件之 Row、Column](https://blog.csdn.net/zgcqflqinhao/article/details/85239084)
+
+# PageView
+## 常用属性
+
+- scrollDirection
+  - 滚动方向,分为 Axis.horizontal(默认) 和 Axis.vertical。
+- reverse
+  - 反转，是否从最后一个开始算0，默认为false。
+- controller
+  - initialPage 初始化第一次默认在第几个。
+  - viewportFraction 占屏幕多少，1为占满整个屏幕
+  - keepPage
+
+    是否保存当前 Page 的状态，如果保存，下次回复对应保存的 page，initialPage被忽略，如果为 false 。下次总是从 initialPage 开始。
+- physics
+
+  滚动的方式
+  - BouncingScrollPhysics 阻尼效果
+  - ClampingScrollPhysics 水波纹效果
+- pageSnapping
+  - 是否具有回弹效果，默认为 true
+- onPageChanged
+  - 监听事件
+- children
+  - 具体子控件的布局
+
+## PageView.build()的sample
+
+### 薪资管理日历pageview的代码
+``` dart
+PageView.builder(
+  onPageChanged: onPageChanged,
+  controller: pageController,
+  physics: new ScrollPhysics(),
+  itemBuilder:(context,index){
+    return CalendarBody(
+      showCount: DateUtil.weeksInMonth(targetMonth.month, targetMonth.year)*7,
+      dates: DateUtil.collectDateTime(targetMonth),
+      showBorder: false,
+      childAspectRatio: 1,
+      onPressed: onPressed,
+      targetMonth: targetMonth,
+      selectedDay: selectedDay
+    );
+  }
+)
+```
