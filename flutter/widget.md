@@ -3,6 +3,7 @@
 - [Decoration背景设定](#Decoration背景设定)
 - [Row和Column](#Row和Column)
 - [PageView](#PageView)
+- [ScrollPhysics详细](#ScrollPhysics详细)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -208,3 +209,26 @@ PageView.builder(
   }
 )
 ```
+
+# ScrollPhysics详细
+
+### NeverScrollablePhysics
+
+`NeverScrollablePhysics`呈现不可滚动的列表。使用此选项可以完全禁用`ListView`的滚动。
+
+### BouncingScrollPhysics
+
+当列表结束时，`BouncingScrollPhysics`会弹回列表。在iOS上使用类似的效果。
+
+### ClampingScrollPhysics
+
+这是Android上使用的默认滚动物理。 列表在结尾处停止并给出指示的水波纹效果。
+
+### FixedExtentScrollPhysics
+
+这与此列表中的其他内容略有不同，因为它仅适用于`FixedExtendScrollControllers`和使用它们的列表。如下：采用`ListWheelScrollView`来制作类似轮子的列表。
+
+`FixedExtentScrollPhysics`仅滚动到项目而不是其间的任何偏移。
+
+## 参考
+https://juejin.im/post/5be1342fe51d45715f654562
