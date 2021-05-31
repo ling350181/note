@@ -6,6 +6,7 @@
 - [The method 'findAncestorStateOfType' was called on null.](#BuildContext为空)
 - [google ads更换版本时出现build失败的情况](#谷歌广告build失败)
 - [ios发布时Archive失败但是可以build成功](#ios发布时Archive失败)
+- [页面bottomBar底部固定控件](#页面bottomBar底部固定控件)
 
 # ExpansionPanel
 
@@ -213,4 +214,19 @@ end
 
   ios Archive打开的是Runner.xcodeproj，所以出现以上错误，应该打开Runner.xcworkspace，就解决问题了。
 
+# 页面bottomBar底部固定控件
+
+当想在一个页面底部固定一个widget当时候，可以用以下布局可以实现
+  ``` dart
+ Column(
+  children: [
+    Expanded(
+      child: SingleChildScrollView()
+    ),
+    Container(),/// 固定对象
+  ]
+)
+  ```
+
+- 参考：https://zenn.dev/nitaking/articles/ad61015f8ddfae
 
