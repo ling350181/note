@@ -1,6 +1,7 @@
 - [app名字本地化](#app名字本地化)
 - [安卓版本发布](#安卓版本发布)
 - [flutter SDK channel](#flutter频道)
+- [flutter icon](#flutter图标)
 
 
 # app名字本地化
@@ -61,3 +62,6 @@ flutter channel stable
 flutter upgrade
 ```
 
+# flutter图标
+
+[font awesome](https://fontawesome.com/v5.15/icons?d=gallery&p=2)
