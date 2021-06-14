@@ -7,6 +7,7 @@
 - [google ads更换版本时出现build失败的情况](#谷歌广告build失败)
 - [ios发布时Archive失败但是可以build成功](#ios发布时Archive失败)
 - [页面bottomBar底部固定控件](#页面bottomBar底部固定控件)
+- [Flutterで画像を角丸に切って『キレイに』ボーダーをつける](#Flutterで画像を角丸に切って『キレイに』ボーダーをつける)
 
 # ExpansionPanel
 
@@ -230,3 +231,58 @@ end
 
 - 参考：https://zenn.dev/nitaking/articles/ad61015f8ddfae
 
+# Flutterで画像を角丸に切って『キレイに』ボーダーをつける
+
+1. 一番綺麗な書き方
+
+``` dart
+return Container(
+      width: 200,
+      height: 200,
+      foregroundDecoration: BoxDecoration(
+        border: Border.all(color: Colors.white, width: 3),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      // 魔法の padding
+      padding: const EdgeInsets.all(0.5),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        clipBehavior: Clip.hardEdge,
+        child: Image.network('https://i.picsum.photos/id/563/200/200.jpg'),
+      ),
+    );
+```
+
+- 参考：https://qiita.com/macoshita/items/7a26737946ffbf317384
+
+2. foregroundDecorationを使う
+``` dart
+return Container(
+      width: 200,
+      height: 200,
+      foregroundDecoration: BoxDecoration( 
+        border: Border.all(color: Colors.white, width: 3),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        clipBehavior: Clip.hardEdge,
+        child: Image.network('https://i.picsum.photos/id/563/200/200.jpg'),
+      ),
+    );
+```
+
+3. BoxDecoration で image, border, borderRadius を指定
+``` dart
+return Container(
+      width: 200,
+      height: 200,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage('https://i.picsum.photos/id/563/200/200.jpg'),
+        ),
+        border: Border.all(color: Colors.white, width: 3),
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
+```
