@@ -5,6 +5,7 @@
 - [PageView](#PageView)
 - [ScrollPhysics详细](#ScrollPhysics详细)
 - [Wrap](#Wrap)
+- [圆角的组件ClipRRect](#圆角的组件ClipRRect)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -137,6 +138,52 @@ decoration: new UnderlineTabIndicator(
   borderSide: BorderSide(width: 2.0, color: Colors.white),
   insets: EdgeInsets.fromLTRB(0,0,0,10)
 ),
+```
+
+# 圆角的组件ClipRRect
+
+## 顶部圆角
+
+```dart
+ClipRRect(
+  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+  child: Container(
+    color: Colors.white,
+  )
+)
+```
+
+## 底部圆角
+
+```
+ClipRRect(
+  borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+  child: Container(
+    color: Colors.white,
+  )
+)
+```
+
+## 全部圆角
+
+```dart
+ClipRRect(
+  borderRadius: BorderRadius.all(Radius.circular(20)),
+  child: Container(
+    color: Colors.white,
+  )
+)
+```
+
+## 特定部分圆角
+
+```dart
+ClipRRect(
+  borderRadius: BorderRadius.only(topLeft:Radius.circular(20),topRight:Radius.circular(20),bottomLeft:Radius.circular(20),bottomRight:Radius.circular(20)),
+  child: Container(
+    color: Colors.white,
+  )
+)
 ```
 
 # Row和Column
