@@ -6,6 +6,7 @@
 - [ScrollPhysics详细](#ScrollPhysics详细)
 - [Wrap](#Wrap)
 - [圆角的组件ClipRRect](#圆角的组件ClipRRect)
+- [StickyHeader](#StickyHeader)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -300,3 +301,40 @@ run 的对齐方式。run 可以理解为新的行或者 列，如果是水平�
 runSpacing
 run 的间距
 ```
+
+# StickyHeader
+
+可滚动内容上放置标题，当内容滚动时，这些标题将粘在容器的顶部。
+
+引用第三方库:pubspec.ymal
+```dart
+  sticky_headers: ^0.1.8+1
+```
+
+例：
+``` dart
+class Example extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(itemBuilder: (context, index) {
+      return StickyHeader(
+        header: Container(
+          height: 50.0,
+          color: Colors.blueGrey[700],
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          alignment: Alignment.centerLeft,
+          child: Text('Header #$index',
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
+        content: Container(
+          child: Image.network(imageForIndex(index), fit: BoxFit.cover,
+            width: double.infinity, height: 200.0),
+        ),
+      );
+    });
+  }
+}
+```
+pub.dev地址：
+https://pub.dev/packages/sticky_headers
