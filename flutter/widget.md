@@ -4,6 +4,7 @@
 - [Row和Column](#Row和Column)
 - [PageView](#PageView)
 - [ScrollPhysics详细](#ScrollPhysics详细)
+- [Wrap](#Warp)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -232,3 +233,23 @@ PageView.builder(
 
 ## 参考
 https://juejin.im/post/5be1342fe51d45715f654562
+
+# Wrap
+
+## Wrap属性
+``` dart
+direction
+主轴的方向，默认水平
+alignment
+主轴的对其方式
+spacing
+主轴方向上的间距
+textDirection
+文本方向
+verticalDirection
+定义了 children 摆放顺序，默认是 down，见 Flex 相关属性介绍。
+runAlignment
+run 的对齐方式。run 可以理解为新的行或者 列，如果是水平方向布局的话，run 可以理解 为新的一行
+runSpacing
+run 的间距
+```
