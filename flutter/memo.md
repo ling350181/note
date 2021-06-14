@@ -7,7 +7,7 @@
 - [google ads更换版本时出现build失败的情况](#谷歌广告build失败)
 - [ios发布时Archive失败但是可以build成功](#ios发布时Archive失败)
 - [页面bottomBar底部固定控件](#页面bottomBar底部固定控件)
-- [Flutterで画像を角丸に切って『キレイに』ボーダーをつける](#Flutterで画像を角丸に切って『キレイに』ボーダーをつける)
+- [Flutterで画像を角丸に切って綺麗にボーダーをつける](#Flutterで画像を角丸に切って綺麗にボーダーをつける)
 
 # ExpansionPanel
 
@@ -231,7 +231,7 @@ end
 
 - 参考：https://zenn.dev/nitaking/articles/ad61015f8ddfae
 
-# Flutterで画像を角丸に切って『キレイに』ボーダーをつける
+# Flutterで画像を角丸に切って綺麗にボーダーをつける
 
 1. 一番綺麗な書き方
 
