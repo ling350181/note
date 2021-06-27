@@ -8,6 +8,7 @@
 - [ios发布时Archive失败但是可以build成功](#ios发布时Archive失败)
 - [页面bottomBar底部固定控件](#页面bottomBar底部固定控件)
 - [Flutterで画像を角丸に切って綺麗にボーダーをつける](#Flutterで画像を角丸に切って綺麗にボーダーをつける)
+- [ListView里面再套一个ListView](#ListView里面再套一个ListView)
 
 # ExpansionPanel
 
@@ -286,3 +287,20 @@ return Container(
       ),
     );
 ```
+
+# ListView里面再套一个ListView
+
+ListView里想再套一个ListView时会出现下面的error
+
+``` log
+════════ Exception caught by rendering library ═════════════════════════════════
+'package:flutter/src/rendering/sliver_multi_box_adaptor.dart': Failed assertion: line 544 pos 12: 'child.hasSize': is not true.
+The relevant error-causing widget was
+ListView
+════════════════════════════════════════════════════════════════════════════════
+
+```
+
+- 解决方案
+
+ListView的属性中加入shrinkWrap: true
