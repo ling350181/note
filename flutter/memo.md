@@ -304,3 +304,7 @@ ListView
 - 解决方案
 
 ListView的属性中加入shrinkWrap: true
+
+- 参考
+
+https://stackoverflow.com/questions/53465394/flutter-listview-builder-inside-another-listview
