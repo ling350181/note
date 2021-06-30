@@ -74,3 +74,5 @@ $ git revert HEAD
 $ git push origin HEAD
 ```
 
+## 参考
+https://qiita.com/S42100254h/items/db435c98c2fc9d4a68c2
