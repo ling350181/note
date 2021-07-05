@@ -3,6 +3,7 @@
 - [定义键盘按钮](#键盘自定义按钮)
 - [多语言国际化](#多语言国际化)
 - [sqflite](#sqflite)
+- [flutter的http通信](#flutter的http通信)
 
 
 
@@ -344,7 +345,31 @@ SimpleLocalizations(Locale(langageCode)).title;
 - sqflite使用demo(https://blog.csdn.net/weixin_39852620/article/details/103332636)
 
 
+# flutter的http通信
 
+## 方法1:http package
+### 参考
+https://qiita.com/teracy55/items/de991ddabcf8531208e2
+
+## 方法2:HttpClient
+
+例
+``` dart
+try {
+      var request = await httpClient.getUrl(Uri.parse(path));
+      var response = await request.close();
+      if (response.statusCode == HttpStatus.ok) {
+        var json = await response.transform(utf8.decoder).join();
+        var data = jsonDecode(json);
+        return data;
+      } else {
+        result =
+        '$path 获取失败:\nHttp status ${response.statusCode}';
+      }
+    } catch (exception) {
+      result = '$path json解析失败';
+    }
+```
 
 
 
