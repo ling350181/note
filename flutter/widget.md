@@ -14,6 +14,43 @@
 
 
 # TextField
+``` dart
+const TextField({
+    Key key,
+    this.controller,    //编辑框的控制器，跟文本框的交互一般都通过该属性完成，如果不创建的话默认会自动创建
+    this.focusNode,  //用于管理焦点
+    this.decoration = const InputDecoration(),   //输入框的装饰器，用来修改外观
+    TextInputType keyboardType,   //设置输入类型，不同的输入类型键盘不一样
+    this.textInputAction,   //用于控制键盘动作（一般位于右下角，默认是完成）
+    this.textCapitalization = TextCapitalization.none,
+    this.style,    //输入的文本样式
+    this.textAlign = TextAlign.start,   //输入的文本位置
+    this.textDirection,    //输入的文字排列方向，一般不会修改这个属性
+    this.autofocus = false,   //是否自动获取焦点
+    this.obscureText = false,   //是否隐藏输入的文字，一般用在密码输入框中
+    this.autocorrect = true,   //是否自动校验
+    this.maxLines = 1,   //最大行
+    this.maxLength,   //能输入的最大字符个数
+    this.maxLengthEnforced = true,  //配合maxLength一起使用，在达到最大长度时是否阻止输入
+    this.onChanged,  //输入文本发生变化时的回调
+    this.onEditingComplete,   //点击键盘完成按钮时触发的回调，该回调没有参数，(){}
+    this.onSubmitted,  //同样是点击键盘完成按钮时触发的回调，该回调有参数，参数即为当前输入框中的值。(String){}
+    this.inputFormatters,   //对输入文本的校验
+    this.enabled,    //输入框是否可用
+    this.cursorWidth = 2.0,  //光标的宽度
+    this.cursorRadius,  //光标的圆角
+    this.cursorColor,  //光标的颜色
+    this.keyboardAppearance,
+    this.scrollPadding = const EdgeInsets.all(20.0),
+    this.dragStartBehavior = DragStartBehavior.down,
+    this.enableInteractiveSelection,
+    this.onTap,    //点击输入框时的回调(){}
+    this.buildCounter,
+  })
+————————————————
+版权声明：本文为CSDN博主「XeonYu」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/yuzhiqiang_1993/article/details/88204031
+```
 
 - 详解文档(https://blog.csdn.net/yuzhiqiang_1993/article/details/88204031)
 
