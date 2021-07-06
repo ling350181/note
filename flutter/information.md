@@ -65,3 +65,4 @@ flutter upgrade
 # flutter图标
 
 [font awesome](https://fontawesome.com/v5.15/icons?d=gallery&p=2)
+[outline_material_icons](https://fonts.google.com/icons?selected=Material+Iconsw)
