@@ -4,6 +4,7 @@
 - [多语言国际化](#多语言国际化)
 - [sqflite](#sqflite)
 - [flutter的http通信](#flutter的http通信)
+- [Provider状态管理](#Provider状态管理)
 
 
 
@@ -370,6 +371,58 @@ try {
       result = '$path json解析失败';
     }
 ```
+
+# Provider状态管理
+
+## 引用依赖库
+- https://pub.dev/packages/provider
+``` yaml
+  provider: ^5.0.0
+```
+
+## ChangeNotifierProvider
+
+1. 单个provider
+``` dart
+ return ChangeNotifierProvider(
+      create: (_) => CalendarProvider(),
+      builder: (context, child) {
+        ...
+```
+2. 多个provider
+``` dart
+return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => SettingProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => NotificationProvider())
+        ],
+```
+
+## Provider和Consumer
+
+``` dart
+return ChangeNotifierProvider(
+      create: (context) => CalendarProvider(),
+      builder: (context, child) {
+        return Consumer<CalendarProvider>(
+          builder: (context, provider, child) {
+            return Scaffold(
+              ...
+```
+
+## Provider和Selector
+``` dart
+return ChangeNotifierProvider<ShiftProvider>(
+        create: (context) => ShiftProvider(shiftModel: this.shiftModel),
+        child: Selector<ShiftProvider, ShiftProvider>(
+            selector: (context, provider) => provider,
+            shouldRebuild: (_, model) => model.needRebuild,
+            builder: (context, provider, child) {
+```
+
 
 
 
