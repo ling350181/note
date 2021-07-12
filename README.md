@@ -11,6 +11,7 @@
 - [快捷键](./VScode/vscode快捷键.md)
 
 # flutter
+- [dart语法](./flutter/dart.md)
 - [flutter环境搭建](./flutter/setup.md)
 - [flutter控件](./flutter/widget.md)
 - [flutter插件](./flutter/flutter.md)
