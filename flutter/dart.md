@@ -1,6 +1,9 @@
 - [单例的写法](#单例的写法)
 - [factory关键字](#factory关键字)
+- [late关键字](#late关键字)
 - [用part来拆分库](#用part来拆分库)
+- [List和Map的clone](#List和Map的clone)
+- [扩展运算符(...)](#扩展运算符(...))
 
 # 单例的写法
 
@@ -98,6 +101,33 @@ int main(){
 
 3. [singleton pattern实现单例模式](#单例的写法)
 
+# late关键字
+
+1. 显式声明一个非空的变量，但不初始化
+```dart
+// Using null safety:
+class Coffee {
+  late String _temperature;
+ 
+  void heat() { _temperature = 'hot'; }
+  void chill() { _temperature = 'iced'; }
+ 
+  String serve() => _temperature + ' coffee';
+}
+ 
+main() {
+  var coffee = Coffee();
+  coffee.heat();
+  coffee.serve();
+```
+
+2. 延迟初始化变量
+
+- temperature变量看起来是在声明时就被初始化了，但因为late关键字的存在，如果temperature这个变量没有被使用的话，_readThermometer()这个函数不会被调用，temperature也就不会被初始化了。
+
+```dart
+late String temperature = _readThermometer(); // Lazily initialized.
+```
 # 用part来拆分库
 
 dart中，通过使用part、part of、library来实现拆分库，这样，就可以将一个庞大的库拆分成各种小库，只要引用主库即可
@@ -161,4 +191,37 @@ import 'dart:math';
 //和子库建立联系
 part 'logger.dart';
 part 'calculator.dart';
+```
+
+# List和Map的clone
+
+Dart2.3.0以前可以用下面的方法进行clone
+```dart
+List<String> clone = []..addAll(originalList);
+```
+Dart2.3.0之后有更方便的方法
+1. List
+```dart
+List<String> clone = [...originalList];
+```
+
+2. Map
+```dart
+Map<String, int> clone = {...originalMap};
+```
+
+# 扩展运算符(...)
+
+- 扩展运算符( ...) 
+```dart
+var list = [1, 2, 3];
+var list2 = [0, ...list];
+assert(list2.length == 4);
+```
+
+- 空感知扩展运算符( ...?)
+```dart
+var list;
+var list2 = [0, ...?list];
+assert(list2.length == 1);
 ```
