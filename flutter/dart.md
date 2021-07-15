@@ -4,6 +4,7 @@
 - [用part来拆分库](#用part来拆分库)
 - [List和Map的clone](#List和Map的clone)
 - [扩展运算符(...)](#扩展运算符(...))
+- [Future、Isolate和事件循环](#Future、Isolate和事件循环)
 
 # 单例的写法
 
@@ -225,3 +226,121 @@ var list;
 var list2 = [0, ...?list];
 assert(list2.length == 1);
 ```
+
+# Future、Isolate和事件循环
+
+## Async
+- 该方法的返回值是一个 Future；
+- 它同步执行该方法的代码直到第一个 await 关键字，然后它暂停该方法其他部分的执行；
+- 一旦由 await 关键字引用的 Future 执行完成，下一行代码将立即执行。
+
+```dart
+void main() async {
+  methodA();
+  await methodB();
+  await methodC('main');
+  methodD();
+}
+
+methodA(){
+  print('A');
+}
+
+methodB() async {
+  print('B start');
+  await methodC('B');
+  print('B end');
+}
+
+methodC(String from) async {
+  print('C start from $from');
+
+  Future((){                // <== 该代码将在未来的某个时间段执行
+    print('C running Future from $from');
+  }).then((_){
+    print('C end of Future from $from');
+  });
+
+  print('C end from $from');
+}
+
+methodD(){
+  print('D');
+}
+```
+
+执行结果如下
+```
+A
+B start
+C start from B
+C end from B
+B end
+C start from main
+C end from main
+D
+C running Future from B
+C end of Future from B
+C running Future from main
+C end of Future from main
+```
+
+如果你最初希望示例代码中仅在所有代码末尾执行 methodD() ，那么你应该按照以下方式编写
+
+```dart
+void main() async {
+  methodA();
+  await methodB();
+  await methodC('main');
+  methodD();
+}
+
+methodA(){
+  print('A');
+}
+
+methodB() async {
+  print('B start');
+  await methodC('B');
+  print('B end');
+}
+
+methodC(String from) async {
+  print('C start from $from');
+
+  await Future((){                  // <== 在此处进行修改
+    print('C running Future from $from');
+  }).then((_){
+    print('C end of Future from $from');
+  });
+  print('C end from $from');
+}
+
+methodD(){
+  print('D');
+}
+```
+
+执行结果
+```
+A
+B start
+C start from B
+C running Future from B
+C end of Future from B
+C end from B
+B end
+C start from main
+C running Future from main
+C end of Future from main
+C end from main
+D
+```
+
+## Isolate
+
+```
+「Isolate」在 Flutter 中并不共享内存。不同「Isolate」之间通过「消息」进行通信。
+```
+
+- [参考引用](https://www.jianshu.com/p/0aefa62372c6)
