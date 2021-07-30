@@ -5,6 +5,7 @@
 - [List和Map的clone](#List和Map的clone)
 - [扩展运算符(...)](#扩展运算符(...))
 - [Future、Isolate和事件循环](#Future、Isolate和事件循环)
+- [extension](#extension)
 
 # 单例的写法
 
@@ -344,3 +345,32 @@ D
 ```
 
 - [参考引用](https://www.jianshu.com/p/0aefa62372c6)
+
+# extension
+
+dart扩展方法，支持api的扩展。Dart 扩展需要关键词:extension。这个关键字只有在 Dart 版本 2.7 及其以上才支持。所以请确保你工程项目中 pubspec.yaml 文件中:
+``` yaml
+environment:
+sdk: ">=2.7.0 <3.0.0"
+```
+
+写法如下
+```dart
+extension StringExtension1 on String {
+  //字符转换成Color对象
+  toColor() {
+    var hexColor = this.replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    if (hexColor.length == 8) {
+      return Color(int.parse("0x$hexColor"));
+    }
+  }
+
+  //字符转int
+  parseInt() {
+    return int.parse(this);
+  }
+}
+```
