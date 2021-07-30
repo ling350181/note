@@ -186,8 +186,12 @@ showOverlay(BuildContext context) {
 
 # 多语言国际化
 
-- [中文官方文档](https://book.flutterchina.club/chapter13/multi_languages_support.html)
-- [参考教程](https://blog.csdn.net/zhongad007/article/details/106470787/)
+- 中文官方文档
+  - https://book.flutterchina.club/chapter13/multi_languages_support.html
+  - https://flutter.cn/docs/development/accessibility-and-localization/internationalization#setting-up
+- 参考教程
+  - https://blog.csdn.net/zhongad007/article/details/106470787/
+  - https://qiita.com/tetsukick/items/962505028d14006af370
 
 1. 在pubspec.yaml添加依赖
 ``` dart
