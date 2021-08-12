@@ -1,6 +1,7 @@
 - [submodule](#submodule)
 - [复原文件](#复原文件)
 - [git取消push](#git取消push)
+- [取消merge](#取消merge)
 - [git忽略文件(.gitignore)](#git忽略文件(.gitignore))
 
 # submodule
@@ -77,6 +78,12 @@ $ git push origin HEAD
 
 ## 参考
 https://qiita.com/S42100254h/items/db435c98c2fc9d4a68c2
+
+# 取消merge
+
+```cmd
+git reset --merge
+```
 
 # git忽略文件(.gitignore)
 
