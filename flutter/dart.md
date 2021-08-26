@@ -6,6 +6,7 @@
 - [扩展运算符(...)](#扩展运算符(...))
 - [Future、Isolate和事件循环](#Future、Isolate和事件循环)
 - [extension](#extension)
+- [密码的正则表现](#密码的正则表现)
 
 # 单例的写法
 
@@ -376,3 +377,14 @@ extension StringExtension1 on String {
 ```
 
 - [参考](https://www.jianshu.com/p/48973aaf5883)
+
+# 密码的正则表现
+
+```dart
+String pattern = r'''^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])||
+      (?=.*[a-z])(?=.*[A-Z])(?=.*[-/:-@\[-~])||
+      (?=.*[A-Z])(?=.*[0-9])(?=.*[-/:-@\[-~])||
+      (?=.*[a-z])(?=.*[0-9])(?=.*[-/:-@\[-~])).([a-zA-Z0-9-/:-@\[-~]){8,64}$''';
+RegExp regExp = new RegExp(pattern);
+regExp.hasMatch(text);
+```
