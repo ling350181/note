@@ -1,8 +1,26 @@
+- [GitHub個人トークンの設定方法](#GitHub個人トークンの設定方法)
+- [commit](#commit)
+- [リモートへブランチをpush](#リモートへブランチをpush)
 - [submodule](#submodule)
 - [复原文件](#复原文件)
 - [git取消push](#git取消push)
 - [取消merge](#取消merge)
 - [git忽略文件(.gitignore)](#git忽略文件(.gitignore))
+
+# GitHub個人トークンの設定方法
+- [参照](https://qiita.com/kz800/items/497ec70bff3e555dacd0)
+# commit
+```bash
+git status #ファイルの編集状態確認
+git add . #コミットしたいファイル追加("."ではなくディレクトリを指定する事で個別に追加する事ができる)
+# 例git add app #appディレクトリのファイル変更分のみコミット対象にする
+git commit -m "コミットコメント" #addしたファイルをコミット
+```
+
+# リモートへブランチをpush
+```bash
+git push origin ブランチ名 
+```
 
 # submodule
 
@@ -136,6 +154,7 @@ android/.settings/org.eclipse.buildship.core.prefs
 **/ios/**/profile
 **/ios/**/xcuserdata
 **/ios/.generated/
+**/ios/build/
 **/ios/Flutter/App.framework
 **/ios/Flutter/Flutter.framework
 **/ios/Flutter/Flutter.podspec
