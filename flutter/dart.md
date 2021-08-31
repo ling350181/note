@@ -8,6 +8,7 @@
 - [extension](#extension)
 - [密码的正则表现](#密码的正则表现)
 - [图片的64basecode转换](#图片的64basecode转换)
+- [DateFormat](#DateFormat)
 
 # 单例的写法
 
@@ -449,4 +450,116 @@ pickedImage = File(image.path);
 List<int> imageBytes = await pickedImage.readAsBytes();
 // base64 code
 String base64Image = base64Encode(imageBytes);
+```
+
+# DateFormat
+```dart
+  // 只有日
+  // 例：31日 英文：31
+  DateFormat.d([locale]) : this('d', locale);
+  // 周几
+  // 例：周二 英文：Tue
+  DateFormat.E([locale]) : this('E', locale);
+  // 星期几
+  // 例：星期二 英文：Tuesday
+  DateFormat.EEEE([locale]) : this('EEEE', locale);
+  // 只有月
+  // 例：8月 英文：Aug
+  DateFormat.LLL([locale]) : this('LLL', locale);
+  // 只有月（大写）
+  // 例：八月 英文：August
+  DateFormat.LLLL([locale]) : this('LLLL', locale);
+  // 只有月
+  // 例：8月 英文：8
+  DateFormat.M([locale]) : this('M', locale);
+  // 月日
+  // 例：8/31 英文：8/31
+  DateFormat.Md([locale]) : this('Md', locale);
+  // 月日周几
+  // 例：8/31周二 英文：Tue,8/31
+  DateFormat.MEd([locale]) : this('MEd', locale);
+  // 只有月
+  // 例：8月 英文：Aug
+  DateFormat.MMM([locale]) : this('MMM', locale);
+  // 月日
+  // 例：8月31日 英文：Aug 31
+  DateFormat.MMMd([locale]) : this('MMMd', locale);
+  // 月日周几
+  // 例：8月31日周二 英文：Tue,Aug 31
+  DateFormat.MMMEd([locale]) : this('MMMEd', locale);
+  // 只有月（大写）
+  // 例：八月 英文：August
+  DateFormat.MMMM([locale]) : this('MMMM', locale);
+  // 月日
+  // 例：8月31日 英文：August 31
+  DateFormat.MMMMd([locale]) : this('MMMMd', locale);
+  // 月日星期几
+  // 例：8月31日星期二 英文：Tuesday,August 31
+  DateFormat.MMMMEEEEd([locale]) : this('MMMMEEEEd', locale);
+  // 季度
+  // 例：3季度 英文：Q3
+  DateFormat.QQQ([locale]) : this('QQQ', locale);
+  // 季度
+  // 例：第三季度 英文：3rd quarter
+  DateFormat.QQQQ([locale]) : this('QQQQ', locale);
+  // 年
+  // 例：2021年 英文：2021
+  DateFormat.y([locale]) : this('y', locale);
+  // 年月
+  // 例：2021年8月 英文：8/2021
+  DateFormat.yM([locale]) : this('yM', locale);
+  // 年月日
+  // 例：2021/8/31 英文：8/31/2021
+  DateFormat.yMd([locale]) : this('yMd', locale);
+  // 年月日周几
+  // 例：2021/8/31周二 英文：Tue,8/31/2021
+  DateFormat.yMEd([locale]) : this('yMEd', locale);
+  // 年月
+  // 例：2021年8月 英文：Aug 2021
+  DateFormat.yMMM([locale]) : this('yMMM', locale);
+  // 年月日
+  // 例：2021年8月31日 英文：Aug 31,2021
+  DateFormat.yMMMd([locale]) : this('yMMMd', locale);
+  // 年月日周几
+  // 例：2021年8月31日周二 英文：Tue,Aug 31,2021
+  DateFormat.yMMMEd([locale]) : this('yMMMEd', locale);
+  // 年月
+  // 例：2021年8月 英文：August 2021
+  DateFormat.yMMMM([locale]) : this('yMMMM', locale);
+  // 年月日
+  // 例：2021年8月31日 英文：August 31,2021
+  DateFormat.yMMMMd([locale]) : this('yMMMMd', locale);
+  // 年月日星期几
+  // 例：2021年8月31日星期二 英文：Tuesday,August 31,2021
+  DateFormat.yMMMMEEEEd([locale]) : this('yMMMMEEEEd', locale);
+  // 年季度
+  // 例：2021年第3季度 英文：Q3 2021
+  DateFormat.yQQQ([locale]) : this('yQQQ', locale);
+  // 年季度
+  // 例：2021年第3季度 英文：3rd quarter 2021
+  DateFormat.yQQQQ([locale]) : this('yQQQQ', locale);
+  // 小时
+  // 例：17时 英文：17
+  DateFormat.H([locale]) : this('H', locale);
+  // 小时分钟
+  // 例：17:26 英文：17:26
+  DateFormat.Hm([locale]) : this('Hm', locale);
+  // 小时分钟秒
+  // 例：17:26:59 英文：17:26:59
+  DateFormat.Hms([locale]) : this('Hms', locale);
+  // 小时
+  // 例：下午5时 英文：5PM
+  DateFormat.j([locale]) : this('j', locale);
+  // 小时分钟
+  // 例：下午5:26 英文：5:26 PM
+  DateFormat.jm([locale]) : this('jm', locale);
+  // 小时分钟秒
+  // 例：下午5:26:59 英文：5:26:59 PM
+  DateFormat.jms([locale]) : this('jms', locale);
+  // 分
+  DateFormat.m([locale]) : this('m', locale);
+  // 分秒
+  DateFormat.ms([locale]) : this('ms', locale);
+  // 秒
+  DateFormat.s([locale]) : this('s', locale);
 ```
