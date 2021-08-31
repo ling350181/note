@@ -7,6 +7,7 @@
 - [Future、Isolate和事件循环](#Future、Isolate和事件循环)
 - [extension](#extension)
 - [密码的正则表现](#密码的正则表现)
+- [图片的64basecode转换](#图片的64basecode转换)
 
 # 单例的写法
 
@@ -415,4 +416,36 @@ String pattern = r'''^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])||
       (?=.*[a-z])(?=.*[0-9])(?=.*[-/:-@\[-~])).([a-zA-Z0-9-/:-@\[-~]){8,64}$''';
 RegExp regExp = new RegExp(pattern);
 regExp.hasMatch(text);
+```
+
+# 图片的64basecode转换
+- BASE64 to image
+```dart
+// base64 code
+base64 = event.snapshot.value['image'];
+// Uint8List
+unit8 = base64Decode(base64);
+// 图片显示
+Image.memory(unit8)
+```
+
+- image to BASE64
+依赖包
+```ymal
+image_picker: ^0.8.3+3
+```
+```dart
+// 本地图片选择
+XFile? image = await ImagePicker().pickImage(source:ImageSource.gallery);
+// 取得的图片文件
+final pickedImage;
+if(image == null){
+  // 没有取得图片，处理结束
+  return;
+}
+pickedImage = File(image.path);
+// 转换成字节
+List<int> imageBytes = await pickedImage.readAsBytes();
+// base64 code
+String base64Image = base64Encode(imageBytes);
 ```
