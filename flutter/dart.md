@@ -430,7 +430,8 @@ Image.memory(unit8)
 ```
 
 - image to BASE64
-依赖包
+
+本地图片提取依赖包
 ```ymal
 image_picker: ^0.8.3+3
 ```
