@@ -8,7 +8,7 @@
 - [extension](#extension)
 - [密码的正则表现](#密码的正则表现)
 - [图片的64basecode转换](#图片的64basecode转换)
-- [DateFormat](#DateFormat)
+- [时间](#时间)
 
 # 单例的写法
 
@@ -452,7 +452,9 @@ List<int> imageBytes = await pickedImage.readAsBytes();
 String base64Image = base64Encode(imageBytes);
 ```
 
-# DateFormat
+# 时间
+
+## DateFormat
 ```dart
   // 只有日
   // 例：31日 英文：31
@@ -562,4 +564,49 @@ String base64Image = base64Encode(imageBytes);
   DateFormat.ms([locale]) : this('ms', locale);
   // 秒
   DateFormat.s([locale]) : this('s', locale);
+```
+
+## 时间转换&操作
+- 创建时间UTC
+```dart
+var d = new DateTime.utc(2019, 10, 10, 9, 30);
+```
+- 解析时间 ISO 8601
+```dart
+// String to DateTime
+String dateString = "2018-10-10 09:30:30+09:00";
+DateTime date = DateFormat("yyyy-MM-ddTHH:mm:ss").parse(dateString);
+// DateTime to String
+DateTime day = DateTime.now();
+String st = DateFormat("yyyy-MM-dd'T'HH:mm:ss'+09:00'").format(day);
+```
+- 时间增减量
+```dart
+var d1 = DateTime.now();
+print(d1);
+print(d1.add(new Duration(minutes: 5)));//加五分钟
+print(d1.add(new Duration(minutes: -5)));//减五分钟
+```
+- 时间比较
+```dart
+  var d1 = new DateTime(2018, 10, 1);
+  var d2 = new DateTime(2018, 10, 10);
+  print(d1.isAfter(d2));//是否在d2之后
+  print(d1.isBefore(d2));//是否在d2之前
+  var d3 = DateTime.now();
+  var d4 = d3.add(new Duration(milliseconds: 30));
+  print(d3.isAtSameMomentAs(d4));//是否相同
+```
+- 时间差
+```dart
+var d1 = new DateTime(2018, 10, 1);
+var d2 = new DateTime(2018, 10, 10);
+var difference = d1.difference(d2);
+print([difference.inDays, difference.inHours]);//d1与d2相差的天数与小时
+```
+- 时间戳
+```dart
+  var now = new DateTime.now();
+  print(now.millisecondsSinceEpoch);//单位毫秒，13位时间戳
+  print(now.microsecondsSinceEpoch);//单位微秒,16位时间戳
 ```
