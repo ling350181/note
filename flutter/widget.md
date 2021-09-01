@@ -7,6 +7,7 @@
 - [Wrap](#Wrap)
 - [圆角的组件ClipRRect](#圆角的组件ClipRRect)
 - [StickyHeader](#StickyHeader)
+- [flutter icon](#flutter图标)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -375,3 +376,12 @@ class Example extends StatelessWidget {
 ```
 pub.dev地址：
 https://pub.dev/packages/sticky_headers
+
+
+# flutter图标
+
+- [font awesome](https://fontawesome.com/v5.15/icons?d=gallery&p=2)
+- [outline_material_icons](https://fonts.google.com/icons?selected=Material+Iconsw)
+
+pub.dev地址：
+- https://pub.dev/packages/font_awesome_flutter
