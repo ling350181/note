@@ -5,6 +5,7 @@
 - [sqflite](#sqflite)
 - [flutter的http通信](#flutter的http通信)
 - [Provider状态管理](#Provider状态管理)
+- [Health](#Health)
 
 
 
@@ -427,7 +428,27 @@ return ChangeNotifierProvider<ShiftProvider>(
             builder: (context, provider, child) {
 ```
 
+# Health
 
+## iOS
+Health Careの取り込み
+1. Info.plistの追記
+```plist
+<key>NSHealthShareUsageDescription</key>
+<string>We will sync your data with the Apple Health app to give you better insights</string>
+<key>NSHealthUpdateUsageDescription</key>
+<string>We will sync your data with the Apple Health app to give you better insights</string>
+```
+2. Enable "HealthKit" inside the "Capabilities" tab
+## Android
+Google Fitの取り込み
+1. console.developers.google.comでFitness APIを有効化
+2. console.developers.google.comでOAuth同意画面を作成する
+3. Fitness API→認証情報からOAuth 2.0 クライアント IDを作成する
+4. manifestファイルにpermissionを追記
+```xml
+<uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+```
 
 
 
