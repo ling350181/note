@@ -8,6 +8,7 @@
 - [圆角的组件ClipRRect](#圆角的组件ClipRRect)
 - [StickyHeader](#StickyHeader)
 - [flutter icon](#flutter图标)
+- [RefreshIndicator下拉更新](#RefreshIndicator下拉更新)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -385,3 +386,50 @@ https://pub.dev/packages/sticky_headers
 
 pub.dev地址：
 - https://pub.dev/packages/font_awesome_flutter
+
+# RefreshIndicator下拉更新
+RefreshIndicator的child用ListView可以实现下拉更新。当ListView的长度不够的时候，ListView的physics属性用AlwaysScrollableScrollPhysics()，可以实现下拉更新
+```dart
+...
+child: ListView.builder(
+           physics: AlwaysScrollableScrollPhysics(),
+           itemCount: itemList.length,
+           itemBuilder: (BuildContext context, int i) {
+             return ListTile(
+               title: Text(itemList[i]),
+             );
+           },
+         ),
+...
+```
+
+例子：
+```dart
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: new RefreshIndicator(
+          onRefresh: _onRefresh,
+          child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(8.0),
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                height: 50,
+                color: Colors.amber[600],
+                child: Text("Updated at - " + updated_at.toString()),
+              ),
+            ],
+          )),
+    );
+}
+Future<void> _onRefresh() async {
+    setState(() {
+      updated_at = new DateTime.now();
+    });
+}
+```
