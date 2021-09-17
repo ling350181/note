@@ -469,4 +469,4 @@ Divider(
   - 从本地文件系统创建图片
 - Image.memory 
   - 从Uint8List创建图片
-  - [图片的Uint8List转换方法](./flutter/dart.md#图片的64basecode转换)
+  - [图片的Uint8List转换方法](/flutter/dart.md#图片的64basecode转换)
