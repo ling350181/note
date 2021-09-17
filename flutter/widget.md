@@ -10,6 +10,7 @@
 - [flutter icon](#flutter图标)
 - [RefreshIndicator下拉更新](#RefreshIndicator下拉更新)
 - [Divider](#Divider)
+- [Image](#Image)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -457,3 +458,15 @@ Divider(
         space: 5
       ),
 ```
+
+# Image
+创建图片有以下几种方式
+- Image.asset 
+  - 从 AssetBundle创建图片)
+- Image.network
+  - 从网络画创建图片
+- Image.file
+  - 从本地文件系统创建图片
+- Image.memory 
+  - 从Uint8List创建图片
+  - [图片的Uint8List转换方法](./flutter/dart.md#图片的64basecode转换)
