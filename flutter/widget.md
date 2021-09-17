@@ -462,7 +462,7 @@ Divider(
 # Image
 创建图片有以下几种方式
 - Image.asset 
-  - 从 AssetBundle创建图片)
+  - 从 AssetBundle创建图片
 - Image.network
   - 从网络画创建图片
 - Image.file
@@ -470,3 +470,27 @@ Divider(
 - Image.memory 
   - 从Uint8List创建图片
   - [图片的Uint8List转换方法](/flutter/dart.md#图片的64basecode转换)
+
+## FadeInImage组件
+我们都知道，图片无论是从资源、文件、网络加载，都不会立刻完成，这样会出现短暂的空白，尤其是网络图片。自己处理默认占位图也比较麻烦。FadeInImage 的作用就是：在目标图片加载完成前使用默认图片占位，加载完成后，目标图片会渐变淡入，默认图片会渐变淡出，这样可以既解决图片加载占位问题，渐变的动画在视觉上也不显突兀
+
+简单的使用方法
+```dart
+class FadeInImageDemo extends StatelessWidget{
+  final headUrl =
+      'https://sf1-ttcdn-tos.pstatp.com/img/user-avatar/5b2b7b85d1c818fa71d9e2e8ba944a44~300x300.image';
+  @override
+  Widget build(BuildContext context) {
+    return FadeInImage(
+      width: 100,
+      height: 100,
+      placeholder: AssetImage(
+        'assets/images/default_icon.png',
+      ),
+      image: NetworkImage(headUrl),
+    );
+  }
+}
+```
+- 参考
+  - https://juejin.cn/post/6994609469292281892
