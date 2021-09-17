@@ -9,6 +9,7 @@
 - [StickyHeader](#StickyHeader)
 - [flutter icon](#flutter图标)
 - [RefreshIndicator下拉更新](#RefreshIndicator下拉更新)
+- [Divider](#Divider)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -432,4 +433,27 @@ Future<void> _onRefresh() async {
       updated_at = new DateTime.now();
     });
 }
+```
+
+# Divider
+
+## Divider的属性
+```dart
+Divider(
+  height: 10,//组件高度
+  indent: 20,//左边距
+  endIndent: 20,//右边距
+  thickness: 1,//线粗细
+  color: Colors.orange,//线颜色
+),  
+```
+如果一个应用中需要指定默认的 Divider 样式，每次使用都设置一下显然很麻烦。Flutter中有相关的主题组件 DividerTheme ，其中维护了 DividerThemeData 数据。我们可以通过 该组件使其子节点的  Divider 按照默认样式进行展现
+- 在MaterialApp的主主题里可以进行主题设置，这样使用起来的话就不用每次都进行属性设置了
+```dart
+    theme: ThemeData(
+      dividerTheme: DividerThemeData(
+        color: Colors.orange,
+        thickness: 2,
+        space: 5
+      ),
 ```
