@@ -1,7 +1,13 @@
+- [创建flutter项目](#创建flutter项目)
 - [app名字本地化](#app名字本地化)
 - [安卓版本发布](#安卓版本发布)
 - [flutter SDK channel](#flutter频道)
 
+
+# 创建flutter项目
+```bash
+flutter create --org com.yourdomain your_app_name
+```
 
 # app名字本地化
 

@@ -1,5 +1,3 @@
-
-- [创建flutter项目](#创建flutter项目)
 - [本地通知](#本地通知)
 - [定义键盘按钮](#键盘自定义按钮)
 - [多语言国际化](#多语言国际化)
@@ -8,11 +6,6 @@
 - [Provider状态管理](#Provider状态管理)
 - [Health](#Health)
 
-
-# 创建flutter项目
-```bash
-flutter create --org com.yourdomain your_app_name
-```
 
 # 本地通知
 - [本地通知的例子](https://bitbucket.org/vipinvijayan1987/tutorialprojects/src/LocalNotifications/FlutterTutorialProjects/flutter_demos)
