@@ -1,4 +1,5 @@
 - [创建flutter项目](#创建flutter项目)
+- [fvmでバージョン管理](#fvmでバージョン管理)
 - [app名字本地化](#app名字本地化)
 - [安卓版本发布](#安卓版本发布)
 - [flutter SDK channel](#flutter频道)
@@ -8,6 +9,27 @@
 ```bash
 flutter create --org com.yourdomain your_app_name
 ```
+# fvmでバージョン管理
+
+## fvm のインストール
+```bash
+dart pub global activate fvm
+```
+warnning出ていたら、下記記事を参照に環境変数を設定する
+- [Windows](https://qiita.com/idani/items/0e45d037b4c2a93840a7)
+- Mac
+  - .bashrcや.zshrcへ環境変数を設定する
+  ```bash
+  export PATH="$PATH":"$HOME/.pub-cache/bin"
+  ```
+## MinGWのインストール
+- [Windows](https://note.com/tango9512357/n/nf4c237ebe684#0IZTI)
+  - もしflutterSdkPathはC:\src\flutterで設定されている場合、下記の環境変数の設定も必要です。
+  ```bash
+  C:\src\flutter\bin\cache\dart-sdk\bin
+  ```
+- Mac
+  - Macの場合、MinGWのインストールは不要です。
 
 # app名字本地化
 
