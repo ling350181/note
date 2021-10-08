@@ -5,8 +5,8 @@
 - [复原文件](#复原文件)
 - [git取消push](#git取消push)
 - [取消merge](#取消merge)
-- [.gitignore无效解决办法](#.gitignore无效解决办法)
-- [git忽略文件(.gitignore)](#git忽略文件(.gitignore))
+- [.gitignore无效解决办法](#gitignore无效解决办法)
+- [git忽略文件(.gitignore)](#git忽略文件gitignore)
 
 # GitHub個人トークンの設定方法
 - [参照](https://qiita.com/kz800/items/497ec70bff3e555dacd0)
@@ -104,7 +104,7 @@ https://qiita.com/S42100254h/items/db435c98c2fc9d4a68c2
 git reset --merge
 ```
 
-# .gitignore无效解决办法
+# gitignore无效解决办法
 
 >创建完以后发现未生效，因为.gitignore只能忽略那些原来没有被追踪的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的
 gitignore规则不生效的解决办法，先把本地缓存删除然后更新
@@ -115,7 +115,7 @@ git add .
 git commit -m 'update .gitignore'
 ```
 
-# git忽略文件(.gitignore)
+# git忽略文件gitignore
 
 flutter的.gitignore文件
 ```gitignore
