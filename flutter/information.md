@@ -49,6 +49,18 @@ warnning出ていたら、下記記事を参照に環境変数を設定する
   ```bash
   fvm use <バージョン> global
   ```
+
+## makefileでバージョン管理
+```bash
+.PHONY: install-flutter
+install-flutter:
+	fvm install 2.2.3
+```
+上記のコマンドはプロジェクト直下のMakefileに記載すると、下記のコマンドを打つと、実行できる
+```bash
+make use-version
+```
+
 ## windowsでそのまま実行する、下記のエラーが出るかも
 ```bash
 Usage Exception: Seems you don't have the required permissions on C:\Users\xxx\fvm On Windows FVM requires to run as an administrator or turn on developer... 
