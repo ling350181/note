@@ -19,9 +19,18 @@ warnning出ていたら、下記記事を参照に環境変数を設定する
 - [Windows](https://qiita.com/idani/items/0e45d037b4c2a93840a7)
 - Mac
   - .bashrcや.zshrcへ環境変数を設定する
+    ```bash
+    export PATH="$PATH":"$HOME/.pub-cache/bin"
+    ```
+  - 変更を適用する
+    ```bash
+    exec $SHELL -l
+    ```
+- 次のコマンドが実行できたら、fvmへパスが通っています
   ```bash
-  export PATH="$PATH":"$HOME/.pub-cache/bin"
+  fvm --version
   ```
+
 ## MinGWのインストール
 - [Windows](https://note.com/tango9512357/n/nf4c237ebe684#0IZTI)
   - もしflutterSdkPathはC:\src\flutterで設定されている場合、下記の環境変数の設定も必要です。
@@ -30,6 +39,26 @@ warnning出ていたら、下記記事を参照に環境変数を設定する
   ```
 - Mac
   - Macの場合、MinGWのインストールは不要です。
+
+## fvmでバージョン管理
+- 指定したFlutterバージョンをインストール
+  ```bash
+  $ fvm install <バージョン>
+  ```
+- 次のコマンドで、fvm flutterでなく、単にflutterでfvmでインストールしたFlutterを使えるようになります。
+  ```bash
+  fvm use <バージョン> global
+  ```
+## windowsでそのまま実行する、下記のエラーが出るかも
+```bash
+Usage Exception: Seems you don't have the required permissions on C:\Users\xxx\fvm On Windows FVM requires to run as an administrator or turn on developer... 
+```
+原因は管理者権限のコマンドラインで実行してないからです。
+```bash
+fvm config --cache-path "C:\dev\flutter\versions"
+# コンフィグを確認
+fvm config
+```
 
 # app名字本地化
 
