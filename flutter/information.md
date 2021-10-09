@@ -24,7 +24,8 @@ warnning出ていたら、下記記事を参照に環境変数を設定する
     ```
   - 変更を適用する
     ```bash
-    exec $SHELL -l
+    # またはsource ~/.bash_profile
+    source ~/.bashrc
     ```
 - 次のコマンドが実行できたら、fvmへパスが通っています
   ```bash
@@ -45,10 +46,30 @@ warnning出ていたら、下記記事を参照に環境変数を設定する
   ```bash
   $ fvm install <バージョン>
   ```
+- 次のコマンドで、fvm flutterでインストールしたflutterを使えます。
+  ```bash
+  fvm use <バージョン>
+  # Windowsの場合、管理者権限で実行してください
+  ```
+
 - 次のコマンドで、fvm flutterでなく、単にflutterでfvmでインストールしたFlutterを使えるようになります。
   ```bash
-  fvm use <バージョン> global
+  fvm global <バージョン>
+  # Windowsの場合、管理者権限で実行してください
   ```
+  ただし、環境変数をfvm/default/binに変更しないといけません。
+  - Mac
+    ```bash
+    export PATH="$PATH:$HOME/development/flutter/bin"  <- 削除
+    export PATH="$PATH:$HOME/fvm/default/bin"　　　　　　<- 追加
+    ```
+  - Windows
+    ユーザ環境変数を変更する
+    ```bash
+    C:¥Users¥xxxxx¥flutter¥bin  ->   C¥Users¥xxxxx¥fvm¥default¥bin
+    ```
+  上記の手順で設定終わったら、flutter --versionで確認すると、設定したバージョンになっていることを確認できます。
+
 
 ## makefileでバージョン管理
 ```bash
@@ -60,6 +81,7 @@ install-flutter:
 ```bash
 make use-version
 ```
+※Windowsの場合、管理者権限でコマンドラインを打たないといけないため、makefileは逆に手間かかるかも。。。
 
 ## windowsでそのまま実行する、下記のエラーが出るかも
 ```bash
