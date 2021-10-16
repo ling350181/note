@@ -1,4 +1,5 @@
 - [ExpansionPanelList](#ExpansionPanelList)
+- [ListView](#ListView)
 - [TextField](#TextField)
 - [Decoration背景设定](#Decoration背景设定)
 - [Row和Column](#Row和Column)
@@ -17,6 +18,38 @@
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
 - [踩坑点](./memo.md)
 
+# ListView
+- builder属性详细介绍
+```dart
+// manual 和 onDrag 的效果如下：
+// 当前键盘弹出时，如果为manual ，列表滑动过程中键盘不会主动隐藏。
+// 为onDrag时，滑动列表时，键盘会主动隐藏 
+keyboardDismissBehavior：ScrollViewKeyboardDismissBehavior.manual,
+//设置滑动方向 Axis.horizontal 水平  默认 Axis.vertical 垂直
+scrollDirection: Axis.vertical,
+//内间距
+padding: EdgeInsets.all(10.0),
+//是否倒序显示 默认正序 false  倒序true
+reverse: false,
+//false，如果内容不足，则用户无法滚动 而如果[primary]为true，它们尝试滚动。
+primary: true,
+//确定每一个item的高度 会让item加载更加高效
+itemExtent: 50.0,
+//内容适配
+shrinkWrap: true,
+//item 数量
+itemCount: list.length,
+//滑动类型设置
+// AlwaysScrollableScrollPhysics() 总是可以滑动 
+// NeverScrollableScrollPhysics 禁止滚动 
+// BouncingScrollPhysics 内容超过一屏 上拉有回弹效果 
+// ClampingScrollPhysics 包裹内容 不会有回弹
+physics: new ClampingScrollPhysics(),
+//cacheExtent  设置预加载的区域 
+cacheExtent: 30.0, 
+//滑动监听
+controller ,
+```
 
 # TextField
 ``` dart
