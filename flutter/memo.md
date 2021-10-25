@@ -9,6 +9,8 @@
 - [页面bottomBar底部固定控件](#页面bottomBar底部固定控件)
 - [Flutterで画像を角丸に切って綺麗にボーダーをつける](#Flutterで画像を角丸に切って綺麗にボーダーをつける)
 - [ListView里面再套一个ListView](#ListView里面再套一个ListView)
+- [build pods失败](#build_pods失败)
+- ['Flutter/Flutter.h' file not found ](#'Flutter/Flutter.h'文件找不到)
 
 # ExpansionPanel
 
@@ -308,3 +310,36 @@ ListView的属性中加入shrinkWrap: true
 - 参考
 
 https://stackoverflow.com/questions/53465394/flutter-listview-builder-inside-another-listview
+
+# build_pods失败
+
+出现以下编译错误
+```bash
+ Unable to find matching .xcframework slice in
+    '.../ios/Pods/WebRTC-SDK/WebRTC.xcframework WebRTC framework
+    ios-x86_64-simulator ios-arm64' for the current build architectures (arm64 x86_64 i386).
+```
+- 修改以下内容
+  - xcode→Pods→Architectures→Excluded Architectures→any ios simulator sdk ---arm64
+- 参考
+  - https://issueexplorer.com/issue/CocoaPods/CocoaPods/10978
+
+
+# # 'Flutter/Flutter.h'文件找不到
+
+```bash
+Shared preferences throws 'Flutter/Flutter.h' file not found 
+```
+
+Podfile里加上这一行
+```bash
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    flutter_additional_ios_build_settings(target)
+  end
+end
+
+```
+
+- 参考
+  - https://github.com/flutter/flutter/issues/76594
