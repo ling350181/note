@@ -10,7 +10,7 @@
 - [Flutterで画像を角丸に切って綺麗にボーダーをつける](#Flutterで画像を角丸に切って綺麗にボーダーをつける)
 - [ListView里面再套一个ListView](#ListView里面再套一个ListView)
 - [build pods失败](#build_pods失败)
-- ['Flutter/Flutter.h' file not found ](#Flutter/Flutter.h文件找不到)
+- ['Flutter/Flutter.h' file not found ](#Flutter.h文件找不到)
 
 # ExpansionPanel
 
@@ -325,7 +325,7 @@ https://stackoverflow.com/questions/53465394/flutter-listview-builder-inside-ano
   - https://issueexplorer.com/issue/CocoaPods/CocoaPods/10978
 
 
-# Flutter/Flutter.h文件找不到
+# Flutter.h文件找不到
 
 ```bash
 Shared preferences throws 'Flutter/Flutter.h' file not found 
