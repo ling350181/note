@@ -19,13 +19,28 @@ warnning出ていたら、下記記事を参照に環境変数を設定する
 - [Windows](https://qiita.com/idani/items/0e45d037b4c2a93840a7)
 - Mac
   - .bashrcや.zshrcへ環境変数を設定する
+
+    ターミナルを起動して以下を実行してください。
+    ```bash
+    echo $SHELL
+    ```
+    自分の環境に合ったほうを実行して進めてください。
+    ```bash
+    // zshの場合
+    vim .zshrc
+
+    // bashの場合
+    vim .bash_profile
+    ```
+
+    /bin/zshと返ってきたら使用しているシェルはzsh、/bin/bash と返ってきたらbash　を使用していることになります。
     ```bash
     export PATH="$PATH":"$HOME/.pub-cache/bin"
     ```
   - 変更を適用する
     ```bash
     # またはsource ~/.bash_profile
-    source ~/.bashrc
+    source ~/.zshrc
     ```
 - 次のコマンドが実行できたら、fvmへパスが通っています
   ```bash
