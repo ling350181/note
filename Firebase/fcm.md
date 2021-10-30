@@ -127,3 +127,7 @@ await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
   sound: true,
 );
 ```
+
+- 参考
+    - https://www.jianshu.com/p/cc77dd21e687
+    - https://zuma-lab.com/posts/flutter-fcm-push-notify-development
