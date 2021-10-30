@@ -19,7 +19,8 @@
 - [flutter插件](./flutter/flutter.md)
 - [flutter知识](./flutter/information.md)
 - [flutter踩坑点](./flutter/memo.md)
-- [firebase](./flutter/firebase.md)
+- firebase
+    - [FCM](./flutter/Firebase/fcm.md)
 
 # AWS
 - [aws環境構築](./AWS/setup.md)
