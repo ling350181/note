@@ -5,6 +5,7 @@
 - [flutter的http通信](#flutter的http通信)
 - [Provider状态管理](#Provider状态管理)
 - [Health](#Health)
+- [アプリの状態変化を監視・取得する方法](#アプリの状態変化を監視・取得する方法)
 
 
 # 本地通知
@@ -448,5 +449,70 @@ Google Fitの取り込み
 <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
 ```
 
+# アプリの状態変化を監視・取得する方法
 
+## 取得できるアプリの状態変化
+- detached
 
+  Flutterエンジン上で動作していながらもビューが無い状態。エンジンの初期起動時や Navigator.pop によってビューが破棄された際になるとのことです。
+
+  実際にテストしてみたところ、Android ではバックボタンでアプリからホーム画面に戻った際にこの状態になっていました。
+- inactive
+
+  ユーザーからの入力を受け取らない非アクティブ状態。
+
+  iOSでは、例えば、着信があった際やTouchIDの要求画面の表示、コントロールセンターを開いた時、UIViewControllerのトランジション時など。
+- paused
+
+  アプリがユーザーに非表示であり入力も受け付けず、バックグラウンドで動作している状態。Android における onPause() に相当。
+
+  この状態の時、コールバック Window.onBeginFrame および Window.onDrawFrame は呼ばれないとのこと。
+
+  実機では完全にホーム画面に戻った時に paused となります。
+- resume
+
+  アプリがフォアグラウンドに移行した時。
+
+  アプリは可視状態となり、入力も受け取るようになる。Android における onPostResume() に相当。
+- suspending(Androidのみ)
+
+  アプリの一時停止状態。Android における onStop() に相当。iOSには相当するイベントは存在しない。
+
+## アプリの状態変化を監視し、callback
+```dart
+class _LifeCycleManagerState extends State<LifecycleManager>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print('state = $state');
+    switch (state) {
+      case AppLifecycleState.resumed:
+        widget.callback?.onResumed();
+        break;
+      case AppLifecycleState.inactive:
+        widget.callback?.onInactive();
+        break;
+      case AppLifecycleState.paused:
+        widget.callback?.onPaused();
+        break;
+      case AppLifecycleState.detached:
+        widget.callback?.onDetached();
+        break;
+    }
+  }
+```
+
+## 关于app生命周期
+https://zhuanlan.zhihu.com/p/83603371
