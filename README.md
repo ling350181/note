@@ -2,6 +2,7 @@
 - [VScode](#VScode)
 - [git语法](#git)
 - [flutter](#flutter)
+- [AWS](#AWS)
 - [各类实用网站](#各类实用网站)
 
 # MarkDown
@@ -19,6 +20,12 @@
 - [flutter知识](./flutter/information.md)
 - [flutter踩坑点](./flutter/memo.md)
 - [firebase](./flutter/firebase.md)
+
+# AWS
+- [aws環境構築](./AWS/setup.md)
+
+# Firebase
+- [FCM](./Firebase/fcm.md)
 
 # git
 - [git](./git/git.md)
