@@ -3,6 +3,7 @@
 - [late关键字](#late关键字)
 - [用part来拆分库](#用part来拆分库)
 - [List和Map的clone](#List和Map的clone)
+- [数组操作方法](#数组操作方法)
 - [扩展运算符(...)](#扩展运算符(...))
 - [Future、Isolate和事件循环](#Future、Isolate和事件循环)
 - [extension](#extension)
@@ -214,6 +215,9 @@ List<String> clone = [...originalList];
 ```dart
 Map<String, int> clone = {...originalMap};
 ```
+
+# 数组操作方法
+- [参考](https://www.jianshu.com/p/1c7d828b1153)
 
 # 扩展运算符(...)
 
