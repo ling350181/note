@@ -1,5 +1,6 @@
 - [ExpansionPanelList](#ExpansionPanelList)
 - [ListView](#ListView)
+- [PageView](#PageView)
 - [TextField](#TextField)
 - [Decoration背景设定](#Decoration背景设定)
 - [Row和Column](#Row和Column)
@@ -50,6 +51,52 @@ cacheExtent: 30.0,
 //滑动监听
 controller ,
 ```
+
+# PageView
+
+- 主要属性
+```dart
+PageView({
+    Key key,
+    this.scrollDirection = Axis.horizontal,     // 页面滑动方向(水平/竖直)
+    this.reverse = false,           // 是否反向滑动
+    PageController controller,      // 页面控制器
+    this.physics,                   // 滑动到首页和末页动画效果
+    this.pageSnapping = true,       // 是否整页滑动
+    this.onPageChanged,             // 页面监听滑动回调
+    List<Widget> children = const <Widget>[],   // Page 页面展示子 Widget
+    this.dragStartBehavior = DragStartBehavior.start,
+})
+
+PageView.builder({
+    Key key,
+    this.scrollDirection = Axis.horizontal,
+    ...
+    this.dragStartBehavior = DragStartBehavior.start,
+})
+
+PageView.custom({
+    Key key,
+    this.scrollDirection = Axis.horizontal,
+    ...
+    this.dragStartBehavior = DragStartBehavior.start,
+})
+```
+
+- controller
+```dart
+class PageController extends ScrollController {
+  PageController({
+    this.initialPage = 0, // 页面初始化的Page页数组下标
+    this.keepPage = true, // 是否保存数据状态
+    this.viewportFraction = 1.0, // 每个 Page 页占据整个 PageView 比例
+  })
+}
+```
+PageController还提供了几个重要的方法，包括animateToPage和jumpToPage等进行具体Page页切换，与其他的Widget联动
+
+- [参考](https://www.jianshu.com/p/625ffd7a353d)
+
 
 # TextField
 ``` dart
