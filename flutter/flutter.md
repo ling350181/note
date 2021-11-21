@@ -6,6 +6,7 @@
 - [Provider状态管理](#Provider状态管理)
 - [Health](#Health)
 - [アプリの状態変化を監視・取得する方法](#アプリの状態変化を監視・取得する方法)
+- [本地相册](#本地相册)
 
 
 # 本地通知
@@ -516,3 +517,80 @@ class _LifeCycleManagerState extends State<LifecycleManager>
 
 ## 关于app生命周期
 https://zhuanlan.zhihu.com/p/83603371
+
+# 本地相册
+
+## Package
+```yaml
+photo_manager: ^1.3.10
+```
+https://pub.dev/packages/photo_manager
+
+## 配置
+- iOS
+```plist
+<key>NSPhotoLibraryUsageDescription</key>
+<string>App need your agree, can visit your album</string>
+```
+
+- Android
+- android/build.gradle
+  - Kotlin 版本 ( ext.kotlin_version)升级到1.4.32或最新版本。
+- android/gradle/wrapper/gradle-wrapper.properties
+  - Gradle 版本（中的那个gradle-wrapper.properties）升级到6.8.3或 最新版本但低于7.0.0.
+
+现在，插件的android部分使用api 29来编译插件，所以你的android sdk环境必须包含api 29（androidQ）
+
+如果你的compileSdkVersion和targetSdkVersion都在28以下，可以使用PhotoManager.forceOldApi强制旧的api访问相册。如果您不确定这部分，请不要调用此方法。而且，我建议你添加android:requestLegacyExternalStorage="true"到你的AndroidManifest.xml
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="top.kikt.imagescannerexample">
+
+    <application
+        android:name="io.flutter.app.FlutterApplication"
+        android:label="image_scanner_example"
+        android:requestLegacyExternalStorage="true"
+        android:icon="@mipmap/ic_launcher">
+    </application>
+</manifest>
+```
+
+## 使用方法
+```dart
+List<AssetPathEntity> list = await PhotoManager.getAssetPathList(
+  type:RequestType.image,
+  onlyAll : true,
+  hasAll : true,
+);
+
+List<AssetEntity> assetEntity = list.entity[0].getAssetListPaged(0,60);
+```
+## 各类参数
+- hasAll
+  - 包含所有的app，比如ios的"Camera Roll",Android的"Recent"
+- onlyAll
+  - 如果为真，则只返回一个包含所有项目的相册
+- filterOption
+  - 过滤选项
+  - https://pub.dev/packages/photo_manager#filteroption
+
+## requestPermissionExtend
+在iOS14中，Apple将“LimitedPhotos Library”添加到iOS。当用户选择部分照片许可时候，我们必须通过PhotoManager.requestPermissionExtend()来请求许可，
+否则没有办法收集到最新照片
+```dart
+PhotoManager.requestPermissionExtend();
+```
+以上请求许可，返回用户的许可状态PermissionState
+```dart
+/// 部分许可
+PermissionState.limited
+/// 许可
+PermissionState.authorized
+/// 拒绝
+PermissionState.denied
+/// 应用无权访问照片库，用户无权授予权限
+PermissionState.restricted
+/// 用户尚未设置应用的授权状态
+PermissionState.notDetermined
+```
