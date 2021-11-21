@@ -3,8 +3,9 @@
 - [late关键字](#late关键字)
 - [用part来拆分库](#用part来拆分库)
 - [List和Map的clone](#List和Map的clone)
+- [Map](#Map)
 - [数组操作方法](#数组操作方法)
-- [扩展运算符(...)](#扩展运算符(...))
+- [扩展运算符(...)](#扩展运算符)
 - [Future、Isolate和事件循环](#Future、Isolate和事件循环)
 - [extension](#extension)
 - [密码的正则表现](#密码的正则表现)
@@ -216,10 +217,104 @@ List<String> clone = [...originalList];
 Map<String, int> clone = {...originalMap};
 ```
 
+# Map
+- addEntries
+  - MapEntry（キー/値のペア）を要素として末尾へ追加
+  - 以下の場合は、Iterable<MapEntry<int, String>>
+```dart
+void main() {
+  final map1 = <int, String>{
+    0: 'Banana',
+  };
+  final map2 = <int, String>{
+    0: 'Apple',
+    1: 'Peach',
+    2: 'Litchi',
+  };
+  print(map2.entries);
+  map1.addEntries(map2.entries);
+  print(map1);
+}
+```
+実行結果
+```dart
+(MapEntry(0: Apple), MapEntry(1: Peach), MapEntry(2: Litchi))
+{0: Apple, 1: Peach, 2: Litchi}
+```
+
+- putIfAbsent
+  - 指定したkeyが無い場合に、追加する
+
+```dart
+void main() {
+  final map = <int, String>{
+    0: 'Apple',
+    1: 'Peach',
+    2: 'Litchi',
+  };
+  map.putIfAbsent(0, () => 'Banana');
+  map.putIfAbsent(3, () => 'Banana');
+  print(map);
+
+  for (var key in [4, 5]) {
+    map.putIfAbsent(key, () => 'Strawberry');
+  }
+  print(map);
+}
+```
+
+- update
+  - 指定したkeyの値を変更する
+  - 指定したkeyが無い場合には、追加する場合は ifAbsentオプションを追加する
+  - ※以下ではifAbsent: () => 'Apple'が無いと実行時エラーとなる
+    - Unhandled Exception: Invalid argument (key): Key not in map.: 3
+```dart
+void main() {
+  final map = <int, String>{
+    0: 'Apple',
+    1: 'Cherry',
+    2: 'Litchi',
+  };
+  map.update(0, (String value) => 'Banana');
+  print(map);
+  map.update(3, (String value) => 'Strawberry', ifAbsent: () => 'Apple');
+  print(map);
+}
+```
+実行結果
+```dart
+{0: Banana, 1: Cherry, 2: Litchi}
+{0: Banana, 1: Cherry, 2: Litchi, 3: Apple}
+```
+
+- sort
+  - Mapにはない
+  - 似てようなことを行うためには、SplayTreeMapクラスを利用
+
+```dart
+void main() {
+  final map1 = SplayTreeMap();
+  final map2 = <int, String>{
+    2: 'Litchi',
+    0: 'Apple',
+    1: 'Peach',
+  };
+  map1.addAll(map2);
+  //または
+  SplayTreeMap.from(map2);// 昇順
+  SplayTreeMap.from(map2,(a,b) => b.compareTo(b)); // 降順
+}
+```
+
+- [参照](https://zenn.dev/iwaku/articles/2020-12-27-iwaku#map)
+
+
 # 数组操作方法
 - [参考](https://www.jianshu.com/p/1c7d828b1153)
 
-# 扩展运算符(...)
+# 扩展运算符
+
+Dart 2.3引入了扩展运算符（...）和支持null的扩展运算符（...？），它提供了一种将多个元素插入集合的简洁方法
 
 - 扩展运算符( ...) 
 ```dart
