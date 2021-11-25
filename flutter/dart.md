@@ -4,6 +4,7 @@
 - [用part来拆分库](#用part来拆分库)
 - [List和Map的clone](#List和Map的clone)
 - [Map](#Map)
+- [foreach的Future](#foreach的Future)
 - [数组操作方法](#数组操作方法)
 - [扩展运算符(...)](#扩展运算符)
 - [Future、Isolate和事件循环](#Future、Isolate和事件循环)
@@ -308,6 +309,14 @@ void main() {
 
 - [参照](https://zenn.dev/iwaku/articles/2020-12-27-iwaku#map)
 
+# foreach的Future
+
+List.forEach想要async,await的时候用Future.forEach
+```dart
+await Future.forEach(list,(String a)async{
+  ...
+});
+```
 
 # 数组操作方法
 - [参考](https://www.jianshu.com/p/1c7d828b1153)
