@@ -7,6 +7,7 @@
 - [ScrollPhysics详细](#ScrollPhysics详细)
 - [Wrap](#Wrap)
 - [圆角的组件ClipRRect](#圆角的组件ClipRRect)
+- [CircleAvatar](#CircleAvatar)
 - [StickyHeader](#StickyHeader)
 - [flutter icon](#flutter图标)
 - [RefreshIndicator下拉更新](#RefreshIndicator下拉更新)
@@ -398,6 +399,26 @@ runAlignment
 run 的对齐方式。run 可以理解为新的行或者 列，如果是水平方向布局的话，run 可以理解 为新的一行
 runSpacing
 run 的间距
+```
+
+# CircleAvatar
+
+用户的头像。他可以设置颜色和子组件，这样当头像不存在时，一般以颜色和用户名首字母显示
+
+## CircleAvatar的使用
+
+```dart
+CircleAvatar(
+  backgroundImage: AssetImage('assets/images/icon_head.jpg'),
+  radius: 40,
+);
+```
+
+## 前景图片、背景图片、背景色的关系
+
+前景图片、背景图片、背景色显示的优先级顺序
+```dart
+foregroundImage > backgroundImage > backgroundColor
 ```
 
 # StickyHeader
