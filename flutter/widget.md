@@ -4,6 +4,7 @@
 - [TextField](#TextField)
 - [Decoration背景设定](#Decoration背景设定)
 - [Shape](#Shape)
+- [paint](#paint)
 - [Row和Column](#Row和Column)
 - [ScrollPhysics详细](#ScrollPhysics详细)
 - [Wrap](#Wrap)
@@ -433,6 +434,76 @@ ShapeBorder [abstract]
 
 ## 参考
 https://juejin.cn/post/6844904082629459982
+
+# paint
+
+## 常用参数
+```bash
+（1） color: 画笔的颜色
+（2）strokeWidth: 线的宽度
+（3）style： 填充模式，有两种： PaintingStyle.fill : 填充； PaintingStyle.stroke: 空心
+（4）strokeCap：转折处的处理
+（5）blendMode： 重叠部分的处理，一般在截取Image后合并Image用。
+a. src: 只显示源图
+b. dst: 只显示目标图
+c. srcOver: 都显示，重叠部分是src覆盖在dst的上边；
+d. dstOver: 都显示，重叠部分是dst覆盖在src的上边；
+e. srcIn; // 只显示重叠部分的src图，透明部分也是不显示的。
+f. dstIn; // 只显示重叠部分的dst图，透明部分也是不显示的。
+```
+
+## 绘制线段
+```dart
+// 第一个参数表示起点坐标
+// 第二个参数表示终点坐标
+// 第三个参数是画笔
+canvas.drawLine(Offset(10, 10), Offset(100, 100), p);
+```
+
+## 绘制矩形
+绘制矩形需要用到Rect， 而React的创建可以通过Offset和Size来完成，Offset 决定他左上角的坐标 Size 决定他的大小。Rect rect = offset & size;
+```dart
+// 矩形的长宽
+Size size = Size(200, 300);
+// 矩形左上角的坐标
+Offset offset = Offset(200, 200);
+// 合成Rect，为什么可以这样合成？ 官方给的！看下边---> 
+Rect rect = offset & size;
+canvas.drawRect(
+    rect,
+    Paint()
+      ..color = Colors.red
+      ..strokeWidth = 3.0);
+```
+
+## 绘制多边形
+绘制多变形要用到Path的moveTo和lineTo放发，
+void moveTo(double x, double y)： 将画笔的起点移动到（x,y)坐标。
+void lineTo(double x, double y)： 从当前点绘制一条直线到(x,y)坐标。
+```dart
+canvas.drawPath(
+    Path()
+      ..moveTo(30, 200)
+      ..lineTo(200, 200)
+      ..lineTo(100, 300)
+      ..lineTo(50, 330)
+      ..lineTo(30, 300)
+      ..close(),
+    Paint()
+      ..color = Colors.lightBlue
+      ..strokeWidth = 1.0);
+```
+
+## 绘制圆
+```dart
+// 第一个参数是原点坐标
+// 第二个参数是半径
+// 第三个参数是画笔
+canvas.drawCircle(Offset(100, 100), 50, p);
+```
+
+## 参考
+https://www.jianshu.com/p/57714f1cf1a2
 
 # Row和Column
 ## 常用属性
