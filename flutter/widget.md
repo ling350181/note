@@ -3,6 +3,7 @@
 - [PageView](#PageView)
 - [TextField](#TextField)
 - [Decoration背景设定](#Decoration背景设定)
+- [Shape](#Shape)
 - [Row和Column](#Row和Column)
 - [ScrollPhysics详细](#ScrollPhysics详细)
 - [Wrap](#Wrap)
@@ -332,6 +333,106 @@ ClipRRect(
   )
 )
 ```
+
+# Shape
+
+## ShapeBorder组件
+
+```bash
+Material
+Card
+FloatingActionButton
+RawMaterialButton
+MaterialButton
+    |----FlatButton
+    |----RaisedButton
+    |----OutlineButton
+...
+
+ClipPath
+
+```
+
+## ShapeBorder对象
+
+shape对应ShapeBorder对象 , 它的子类如下:
+```bash
+ShapeBorder [abstract]
+|---BoxBorder [abstract]
+    |---BorderDirectional
+    |---Border
+|---RoundedRectangleBorder
+|---ContinuousRectangleBorder
+|---CircleBorder
+|---InputBorder [abstract]
+    |---OutlineInputBorder
+    |---UnderlineInputBorder
+
+```
+
+- BoxBorder
+  1. BorderDirectional
+      
+      BoxBorder主要掌管边线方面的事，自身是abstract，不能直接用
+  ```dart
+  Widget _buildBorderDirectional() {
+  return Material(
+            color: Colors.orangeAccent,
+            shape: BorderDirectional(
+                top: BorderSide(
+                  color: Colors.white,
+                ),
+                start: BorderSide(
+                  color: Colors.black,
+                  width: 15
+                ),
+              bottom: BorderSide(
+                color: Colors.white,
+              )
+            ),
+            elevation: 2,
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(10),
+              height: 80,
+              child: Text(
+                "BorderDirectional",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+          );
+  }
+  ```
+  2. Border
+
+      Border通过【top】【bottom】【left】【right】分别控制上下左右的边线,本质上和BorderDirectional并没有什么区别
+  ```dart
+  Widget _buildBorder() {
+  return Material(
+    color: Colors.orangeAccent,
+    shape: Border(
+      top: BorderSide(width: 5.0, color: Color(0xFFFFDFDFDF)),
+      left: BorderSide(width: 5.0, color: Color(0xFFFFDFDFDF)),
+      right: BorderSide(width: 5.0, color: Color(0xFFFF7F7F7F)),
+      bottom: BorderSide(width: 5.0, color: Color(0xFFFF7F7F7F)),
+    ),
+    ...
+  ```
+- RoundedRectangleBorder和ContinuousRectangleBorder
+
+  圆角类矩形
+
+- CircleBorder
+
+  圆形
+
+- OutlineInputBorder和UnderlineInputBorder
+
+  常用与输入框的边线
+
+
+## 参考
+https://juejin.cn/post/6844904082629459982
 
 # Row和Column
 ## 常用属性
