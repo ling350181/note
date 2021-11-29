@@ -11,6 +11,7 @@
 - [flutter icon](#flutter图标)
 - [RefreshIndicator下拉更新](#RefreshIndicator下拉更新)
 - [Divider](#Divider)
+- [Visibility](#Visibility)
 - [Image](#Image)
 - [透明dailog](#透明dailog)
 
@@ -514,6 +515,38 @@ Divider(
         space: 5
       ),
 ```
+
+# Visibility
+
+Opacity,Offstage,Visibility都可以控制控件的显示/隐藏
+
+## Visibility的使用
+
+```dart
+Visibility(
+  visible: _visible,// true和false来控制组件的显示/隐藏
+  child: buildChild(),
+),
+```
+
+## Visibility的占位组件
+
+想要隐藏时保存尺寸必须maintainSize，maintainAnimation，maintainState要为true
+```dart
+Visibility(
+  visible: _visible,
+  child: buildChild(),
+  maintainSize: true,// 是否保持大小
+  maintainAnimation: true,// 是否停止动画
+  maintainState: true,// 是否保持状态
+),
+
+```
+
+maintainInteractivity可以控制在隐藏时是否响应事件。
+
+## 参考
+https://juejin.cn/post/6995727978034380808
 
 # Image
 创建图片有以下几种方式
