@@ -5,6 +5,7 @@
 - [Decoration背景设定](#Decoration背景设定)
 - [Shape](#Shape)
 - [paint](#paint)
+- [path](#path)
 - [Row和Column](#Row和Column)
 - [ScrollPhysics详细](#ScrollPhysics详细)
 - [Wrap](#Wrap)
@@ -17,6 +18,7 @@
 - [Visibility](#Visibility)
 - [Image](#Image)
 - [透明dailog](#透明dailog)
+- [NotificationListener](#NotificationListener)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -505,6 +507,8 @@ canvas.drawCircle(Offset(100, 100), 50, p);
 ## 参考
 https://www.jianshu.com/p/57714f1cf1a2
 
+# path
+
 # Row和Column
 ## 常用属性
 
@@ -827,3 +831,47 @@ class DialogRouter extends PageRouteBuilder{
 ```
 - 参考
   - https://www.jianshu.com/p/421ce2746941
+
+# NotificationListener
+
+## ScrollNotification
+- ScrollMetrics
+
+  ScrollNotificationクラスには、metricsプロパティとしてScrollMetricsというクラスのオブジェクトが取得できます。これは、現在のスクロール全体の状態を反映しているプロパティのイメージです。
+  - axis
+    - Vertical（縦）かHorizontal（横）
+  - axisDirection
+    - up, down, right, leftのどれか。現在スクロールしている方向ではなく、基準となる方向がどれか（座標の向きのイメージ）
+  - extentBefore
+    - ウィジェットの初めから現在スクロールしている始点までの大きさ（見えていない手前の部分）
+  - extentInside
+    - 現在スクロールしている始点から終点までの大きさ（見えている部分）
+  - extentAfter
+    - 現在スクロールしている終点からウィジェットの終わりまでの大きさ（見えていない後の部分）
+  - atEdge
+    - スクロール位置が一番端にいるかどうか（=extentBefore or extentAfterが0）
+  - maxScrollExtent
+    - スクロール可能な最大値
+  - minScrollExtent
+    - スクロール可能な最小値
+  - viewportDimension
+    - 画面の大きさ
+  - pixels
+    - スクロールの位置（画面の始点の端を0とする）
+
+## UserScrollNotification
+
+- ScrollDirection
+
+  ScrollDirectionクラスのオブジェクトが取得可能。種類は、forward, idle, reverseの3つ。
+
+  - forward
+    - スクロールの始点に向かってスクロールした時（ScrollMetricsのAxisDirectionがdownの場合は上方向にスクロールしている時）
+  - reverse
+    - スクロールの終点に向かってスクロールした時（ScrollMetricsのAxisDirectionがdownの場合は下方向にスクロールしている時）
+  - idle
+    - ユーザーのスクロールが完了した時
+
+
+## 参考
+https://qiita.com/youmeee/items/6ca30bf66646b1639076
