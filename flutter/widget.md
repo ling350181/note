@@ -504,8 +504,13 @@ canvas.drawPath(
 canvas.drawCircle(Offset(100, 100), 50, p);
 ```
 
+## 虚线
+
+- [sample](././sample/dash_path.dart)
+
 ## 参考
 https://www.jianshu.com/p/57714f1cf1a2
+https://juejin.cn/post/6844903919164850189
 
 # path
 
