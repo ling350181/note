@@ -7,6 +7,7 @@
 - [Health](#Health)
 - [アプリの状態変化を監視・取得する方法](#アプリの状態変化を監視・取得する方法)
 - [本地相册](#本地相册)
+- [图片压缩](#图片压缩)
 
 
 # 本地通知
@@ -627,4 +628,39 @@ PermissionState.denied
 PermissionState.restricted
 /// 用户尚未设置应用的授权状态
 PermissionState.notDetermined
+```
+
+# 图片压缩
+
+## 第三方sdk
+https://pub.dev/packages/flutter_image_compress
+```ymal
+flutter_image_compress: ^1.1.0
+```
+## 配置
+可能需要将Kotlin更新到版本1.3.72或更高版本。
+
+## 使用
+```dart
+// 从uint8List取照片
+Image decodedImage = await decodeImageFromList(uint8List);
+// 图片大小1000kb
+int fileSizeLimit = 1000000;
+
+int _count = 1;
+while(fileSizeLimit < uint8List.lengthInBytes){
+  int minWidth = decodedImage.width ~/ _count.toInt();
+  int minHeight = decodedImage.height ~/ _count.toInt();
+
+  int quality = 100 ~/ _count.toInt();
+
+  uint8List = await FlutterImageCopress.compressWithList(
+    uint8List,
+    minWidth: minWidth,
+    minHeight: minHeight,
+    quality: quality,
+  );
+  _count++;
+}
+return uint8List;
 ```
