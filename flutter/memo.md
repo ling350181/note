@@ -12,6 +12,7 @@
 - [build pods失败](#build_pods失败)
 - ['Flutter/Flutter.h' file not found ](#Flutterh文件找不到)
 - [ColumnやRowのtextDirectionでエラーが起きる](#ColumnやRowのtextDirectionでエラーが起きる)
+- [dialog里输入框点击就刷新问题](#dialog里输入框点击就刷新问题)
 
 # ExpansionPanel
 
@@ -380,3 +381,24 @@ import 'package:intl/intl.dart' as hoge
 
 ## 参考
 https://qiita.com/ryota47/items/2a0d789e7eab9bf1fca2
+
+# dialog里输入框点击就刷新问题
+
+## 问题
+在dialog中实装输入框TextField时，发生一点击输入框就rebuild的问题
+
+## 解决方案
+showDialog下面包一个Scaffold就能解决
+```dart
+showDialog(
+  context: context,
+  builder: (BuildContext context){
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        child: ...
+      ),
+    );
+  }
+)
+```
