@@ -11,6 +11,7 @@
 - [ListView里面再套一个ListView](#ListView里面再套一个ListView)
 - [build pods失败](#build_pods失败)
 - ['Flutter/Flutter.h' file not found ](#Flutterh文件找不到)
+- [ColumnやRowのtextDirectionでエラーが起きる](#ColumnやRowのtextDirectionでエラーが起きる)
 
 # ExpansionPanel
 
@@ -343,3 +344,39 @@ end
 
 - 参考
   - https://github.com/flutter/flutter/issues/76594
+
+# ColumnやRowのtextDirectionでエラーが起きる
+
+## 错误
+在Row中定义textDirection时出现错误
+```dart
+TextDirection.rtl
+```
+
+The getter 'rtl' isn't defined for the type 'TextDirection'.
+编译器变换出现TextDirection.RTL。但是还是出现错误
+
+## 原因
+俩个地方都有定义TextDirection，编译出现混乱
+```dart
+class TextDirection {
+  static const LTR = TextDirection._('LTR', 'ltr');
+  static const RTL = TextDirection._('RTL', 'rtl');
+```
+下列文件定义的
+```dart
+import 'package:intl/intl.dart'
+```
+
+## 解决方法
+import的时候用as
+```dart
+import 'package:intl/intl.dart' as hoge
+
+(old) DateFormat('HH:mm').format(date);
+
+(new) format.DateFormat('HH:mm').format(date);
+```
+
+## 参考
+https://qiita.com/ryota47/items/2a0d789e7eab9bf1fca2
