@@ -525,7 +525,7 @@ regExp.hasMatch(text);
 ```
 
 # 图片的64basecode转换
-- BASE64 to image
+## BASE64 to image
 ```dart
 // base64 code
 base64 = event.snapshot.value['image'];
@@ -535,7 +535,7 @@ unit8 = base64Decode(base64);
 Image.memory(unit8)
 ```
 
-- image to BASE64
+## image to BASE64
 
 本地图片提取依赖包
 ```ymal
@@ -555,6 +555,16 @@ pickedImage = File(image.path);
 List<int> imageBytes = await pickedImage.readAsBytes();
 // base64 code
 String base64Image = base64Encode(imageBytes);
+```
+
+## url to BASE64
+```dart
+// url to Uint8List
+Uint8List bytes = (await NetworkAssetBundle(Uri.parse(url)).load(url))
+    .buffer
+    .asUint8List();
+// Uint8List to base64
+base64Encode(bytes);
 ```
 
 # 时间
