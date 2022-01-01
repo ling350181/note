@@ -21,6 +21,7 @@
 - [flutter踩坑点](./flutter/memo.md)
 - firebase
     - [FCM](./flutter/Firebase/fcm.md)
+    - [Authentication](./flutter/Firebase/authentication.md)
 
 # AWS
 - [aws環境構築](./AWS/setup.md)
