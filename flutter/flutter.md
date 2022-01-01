@@ -350,6 +350,40 @@ SimpleLocalizations(Locale(langageCode)).title;
 - 日文依赖库文档(https://flutter.ctrnost.com/logic/sqlite/)
 - sqflite使用demo(https://blog.csdn.net/weixin_39852620/article/details/103332636)
 
+## sql基本类
+- [基类](https://github.com/ling350181/flutter_common/blob/master/lib/plugin/database/base_db_provider.dart)
+
+## 创建TABLE
+
+```dart
+CREATE TABLE テーブル名(カラム名 PRIMARY KEY, ...);
+```
+
+## 主key
+- 自动设置的主key
+  - PRIMARY KEY AUTOINCREMENT
+  ```dart
+  CREATE TABLE テーブル名(
+    カラム名1 INTEGER PRIMARY KEY AUTOINCREMENT,
+    カラム名2 TEXT NOT NULL
+  );
+  ```
+- 单个主key
+  - PRIMARY KEY
+  ```dart
+  CREATE TABLE テーブル名(
+    カラム名1 TEXT NOT NULL PRIMARY KEY,
+    カラム名2 TEXT NOT NULL
+  );
+  ```
+- 复数个主key
+  - PRIMARY KEY(カラム名1, カラム名2, ...)
+  ```dart
+  CREATE TABLE テーブル名(カラム名1, カラム名2, ... ,
+  PRIMARY KEY(カラム名1, カラム名2, ...));
+  ```
+
+
 
 # flutter的http通信
 
