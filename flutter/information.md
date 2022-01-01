@@ -3,6 +3,7 @@
 - [app名字本地化](#app名字本地化)
 - [安卓版本发布](#安卓版本发布)
 - [flutter SDK channel](#flutter频道)
+- [iOS证书配置](#iOS证书配置)
 
 
 # 创建flutter项目
@@ -166,3 +167,6 @@ flutter channel stable
 ```cmd
 flutter upgrade
 ```
+
+# iOS证书配置
+https://www.jianshu.com/notifications
