@@ -507,7 +507,7 @@ canvas.drawCircle(Offset(100, 100), 50, p);
 ## 虚线
 - [CustomPaint绘制田字格](https://juejin.cn/post/6844903919164850189)
 - [第三方包](https://pub.dev/packages/path_drawing)
-- [sample](././sample/dash_path.dart)
+- [sample](https://github.com/ling350181/flutter_common/blob/master/lib/component/dash_path.dart)
 
 ## 参考
 - https://www.jianshu.com/p/57714f1cf1a2
