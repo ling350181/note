@@ -505,7 +505,8 @@ canvas.drawCircle(Offset(100, 100), 50, p);
 ```
 
 ## 虚线
-
+- [CustomPaint绘制田字格](https://juejin.cn/post/6844903919164850189)
+- [第三方包](https://pub.dev/packages/path_drawing)
 - [sample](././sample/dash_path.dart)
 
 ## 参考
