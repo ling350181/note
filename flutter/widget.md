@@ -533,11 +533,15 @@ canvas.drawCircle(Offset(100, 100), 50, p);
 - MainAxisSize：在主轴方向占有空间的值，默认是max。
     - max：根据传入的布局约束条件，最大化主轴方向的可用空间；
     - min：与max相反，是最小化主轴方向的可用空间；
+- textDirection
+    - TextDirection.ltr：从左往右开始排列。
+    - TextDirection.rtl：从右往左开始排列。
 - VerticalDirection：定义了children摆放顺序，默认是down。
     - down：从top到bottom进行布局；
     - up：从bottom到top进行布局。
 ## 参考文档
 - [Flutter 基础组件之 Row、Column](https://blog.csdn.net/zgcqflqinhao/article/details/85239084)
+- [线性布局（Row和Column）](https://book.flutterchina.club/chapter4/row_and_column.html)
 
 # ScrollPhysics详细
 
