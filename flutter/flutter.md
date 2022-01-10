@@ -356,14 +356,22 @@ SimpleLocalizations(Locale(langageCode)).title;
 
 ## 创建TABLE
 
-```dart
+```sql
 CREATE TABLE テーブル名(カラム名 PRIMARY KEY, ...);
+```
+
+## 升顺和降顺
+- ASC...升顺
+- DESC...降顺
+
+```sql
+SELECT * FROM user ORDER BY id DESC, name ASC;
 ```
 
 ## 主key
 - 自动设置的主key
   - PRIMARY KEY AUTOINCREMENT
-  ```dart
+  ```sql
   CREATE TABLE テーブル名(
     カラム名1 INTEGER PRIMARY KEY AUTOINCREMENT,
     カラム名2 TEXT NOT NULL
@@ -371,7 +379,7 @@ CREATE TABLE テーブル名(カラム名 PRIMARY KEY, ...);
   ```
 - 单个主key
   - PRIMARY KEY
-  ```dart
+  ```sql
   CREATE TABLE テーブル名(
     カラム名1 TEXT NOT NULL PRIMARY KEY,
     カラム名2 TEXT NOT NULL
@@ -379,7 +387,7 @@ CREATE TABLE テーブル名(カラム名 PRIMARY KEY, ...);
   ```
 - 复数个主key
   - PRIMARY KEY(カラム名1, カラム名2, ...)
-  ```dart
+  ```sql
   CREATE TABLE テーブル名(カラム名1, カラム名2, ... ,
   PRIMARY KEY(カラム名1, カラム名2, ...));
   ```
