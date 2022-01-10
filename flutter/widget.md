@@ -757,6 +757,8 @@ https://juejin.cn/post/6995727978034380808
 
 # Image
 创建图片有以下几种方式
+- Image()
+  - 从ImageProvider中获取图片，从本质上看，下面的几个方法都是他的具体实现。
 - Image.asset 
   - 从 AssetBundle创建图片
 - Image.network
@@ -766,6 +768,47 @@ https://juejin.cn/post/6995727978034380808
 - Image.memory 
   - 从Uint8List创建图片
   - [图片的Uint8List转换方法](/flutter/dart.md#图片的64basecode转换)
+
+## 属性详解
+```dart
+Image({
+    Key key,
+    @required this.image,
+    this.semanticLabel, // 用来描述图片的，
+    this.excludeFromSemantics = false,
+    this.width,
+    this.height,
+    this.color,
+    this.colorBlendMode,// 对图片进行混合颜色处理
+    this.fit, // 设置图片的填充模式，具体由BoxFit实现
+    this.alignment = Alignment.center,
+    this.repeat = ImageRepeat.noRepeat,
+    this.centerSlice,
+    this.matchTextDirection = false,
+    this.gaplessPlayback = false, // 无间隙播放
+    // 当image provider 发生变化时，显示新图片的过程中，如果true则保留旧图片直至显示出新图片为止；如果false，则显示新图片的过程中，空白，不保留旧图片
+    this.filterQuality = FilterQuality.low,
+  })
+```
+
+## fit
+- BoxFit.contain
+  - 显示整张图片，按照原始比例缩放显示
+- BoxFit.fill
+  - 显示整张图片，拉伸填充全部可显示区域
+- BoxFit.cover
+  - 按照原始比例缩放，可能裁剪，填满可显示区域
+- BoxFit.fitHeight
+  - 按照原始比例缩放，可能裁剪，高度优先填满
+- BoxFit.fitWidth
+  - 按照原始比例缩放，可能裁剪宽度优先填满
+- BoxFit.none
+  - 图片居中显示，不缩放原图，可能被裁剪
+- BoxFit.scaleDown
+  - 显示整张图片，只能缩小或者原图显示
+
+## 参考
+https://www.cnblogs.com/jiuyi/p/12616789.html
 
 ## FadeInImage组件
 我们都知道，图片无论是从资源、文件、网络加载，都不会立刻完成，这样会出现短暂的空白，尤其是网络图片。自己处理默认占位图也比较麻烦。FadeInImage 的作用就是：在目标图片加载完成前使用默认图片占位，加载完成后，目标图片会渐变淡入，默认图片会渐变淡出，这样可以既解决图片加载占位问题，渐变的动画在视觉上也不显突兀
