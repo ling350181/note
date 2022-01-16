@@ -13,6 +13,7 @@
 - ['Flutter/Flutter.h' file not found ](#Flutterh文件找不到)
 - [ColumnやRowのtextDirectionでエラーが起きる](#ColumnやRowのtextDirectionでエラーが起きる)
 - [dialog里输入框点击就刷新问题](#dialog里输入框点击就刷新问题)
+- [local_notification的LateInitializationError](#local_notification的LateInitializationError)
 
 # ExpansionPanel
 
@@ -401,4 +402,27 @@ showDialog(
     );
   }
 )
+```
+
+# local_notification的LateInitializationError
+
+## 报错
+使用flutter_local_notification的zoneSchedule时，TZdateTime无法设置时，错误
+```bash
+LateInitializationError: Field '_local@xxxxxxxx' has not been initialized in flutter
+```
+
+## 原因
+TZDateTime的local是late定义的，还没进行初始化
+- [代码](https://github.com/srawlins/timezone/blob/a4f14a018690233294e914d95efcb09bc9dbf0a0/lib/src/env.dart#L20)
+
+## 对应
+```dart
+import 'package:timezone/data/latest.dart' as tz;
+
+...
+// local初始化
+tz.initializeTimeZones();
+TZDateTime scheduledDate = TZDateTime(
+  local,dateTime.year,dateTime.month,dateTime.day,dateTime.hour,dateTime.minute);
 ```
