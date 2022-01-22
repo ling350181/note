@@ -351,12 +351,12 @@ SimpleLocalizations(Locale(langageCode)).title;
 - 日文依赖库文档(https://flutter.ctrnost.com/logic/sqlite/)
 - sqflite使用demo(https://blog.csdn.net/weixin_39852620/article/details/103332636)
 
-    - [sql基本类](##sql基本类)
-    - [创建TABLE](##创建TABLE)
-    - [升顺和降顺](##升顺和降顺)
-    - [主key](##主key)
-    - [結合](##結合)
-    - [統合・集合](##統合・集合)
+    - [sql基本类](#sql基本类)
+    - [创建TABLE](#创建TABLE)
+    - [升顺和降顺](#升顺和降顺)
+    - [主key](#主key)
+    - [結合](#結合)
+    - [統合・集合](#統合集合)
 
 ## sql基本类
 - [基类](https://github.com/ling350181/flutter_common/blob/master/lib/plugin/database/base_db_provider.dart)
