@@ -455,6 +455,19 @@ SELECT  列名  FROM  表名2
 ```bash
 GROUP BYとは、グループ化を行うために使用される命令です。
 ```
+例：
+```bash
+table:
++--------+------------+
+| name   | team       |
++--------+------------+
+| 山田   | チームA    |
+| 鈴木   | チームA    |
+| 加藤   | チームA    |
+| 田中   | チームB    |
+| 小林   | チームB    |
++--------+------------+
+```
 ```sql
 SELECT team, COUNT(team) FROM user GROUP BY team;
 ```
@@ -467,6 +480,10 @@ SELECT team, COUNT(team) FROM user GROUP BY team;
 | チームB    |           2 |
 +------------+-------------+
 ```
+
+## 「WHERE」と「HAVING」
+- 「WHERE」・・・「GROUP BY」の影響の前に条件が適応される
+- 「HAVING」・・・「GORUP BY」の影響のあとに条件が適応される
 
 # flutter的http通信
 
