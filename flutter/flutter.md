@@ -392,7 +392,44 @@ SELECT * FROM user ORDER BY id DESC, name ASC;
   PRIMARY KEY(カラム名1, カラム名2, ...));
   ```
 
+## 結合
+sql语句：
+```sql
+SELECT *
+  FROM 結合元のテーブル名(左)
+  JOIN 結合先のテーブル名(右)
+    ON 両テーブルの結合条件
 
+SELECT *
+  FROM users -- 結合元の左テーブル
+  JOIN posts --　結合先の右テーブル
+    ON users.id = posts.user_id -- 左テーブルのidと右テーブルのuser_idが一致するもの
+```
+
+## INNER JOIN(内部結合)
+JOIN と INNER JOINは同じです
+1. 右テーブルの行数に合わせて左テーブルの行数を複製する
+2. 結合相手がいない行は結合結果から消滅する
+
+## 外部結合(OUTER JOIN)
+条件に一致させた状態で結合してくれるのに加え、どちらかのテーブルに存在しないもの、NULLのものに関しても強制的に取得してくれます。
+- LEFT JOIN
+- RIGHT JOIN
+- FULL JOIN
+
+```bash
+LEFT JOIN = LEFT OUTER JOIN
+RIGHT JOIN = RIGHT OUTER JOIN
+FULL JOIN = FULL OUTER JOIN
+```
+
+## まとめ
+| 名前 | 種類 | 内容 |
+| --- | --- | --- |
+| JOIN | 内部結合 | 右テーブルの行数に合わせて左テーブルの行数を複製する<br>結合相手がいない行は結合結果から消滅する |
+| LEFT JOIN | 左外部結合 | 左の行は強制的に全て表示する<br>条件に合わないものは、右テーブルに値が全てNULLである行を生成して結合する |
+| RIGHT JOIN | 右外部結合 | 右の行は強制的に全て表示する<br>条件に合わないものは、右テーブルに値が全てNULLである行を生成して結合する |
+| FULL JOIN | 完全外部結合 | 左右の全テーブルを全て表示させる |
 
 # flutter的http通信
 
