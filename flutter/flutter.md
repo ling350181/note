@@ -357,6 +357,7 @@ SimpleLocalizations(Locale(langageCode)).title;
     - [主key](#主key)
     - [結合](#結合)
     - [統合・集合](#統合集合)
+    - [集計](#集計)
 
 ## sql基本类
 - [基类](https://github.com/ling350181/flutter_common/blob/master/lib/plugin/database/base_db_provider.dart)
@@ -449,6 +450,23 @@ SELECT  列名  FROM  表名2
 ```
 - UNION：重複を含めない（重複があったら除外）
 - UNION ALL：重複を含む（すべて抽出）
+
+## 集計
+```bash
+GROUP BYとは、グループ化を行うために使用される命令です。
+```
+```sql
+SELECT team, COUNT(team) FROM user GROUP BY team;
+```
+結果
+```sql
++------------+-------------+
+| team       | COUNT(team) |
++------------+-------------+
+| チームA    |           3 |
+| チームB    |           2 |
++------------+-------------+
+```
 
 # flutter的http通信
 
