@@ -351,6 +351,13 @@ SimpleLocalizations(Locale(langageCode)).title;
 - 日文依赖库文档(https://flutter.ctrnost.com/logic/sqlite/)
 - sqflite使用demo(https://blog.csdn.net/weixin_39852620/article/details/103332636)
 
+    - [sql基本类](##sql基本类)
+    - [创建TABLE](##创建TABLE)
+    - [升顺和降顺](##升顺和降顺)
+    - [主key](##主key)
+    - [結合](##結合)
+    - [統合・集合](##統合・集合)
+
 ## sql基本类
 - [基类](https://github.com/ling350181/flutter_common/blob/master/lib/plugin/database/base_db_provider.dart)
 
@@ -430,6 +437,18 @@ FULL JOIN = FULL OUTER JOIN
 | LEFT JOIN | 左外部結合 | 左の行は強制的に全て表示する<br>条件に合わないものは、右テーブルに値が全てNULLである行を生成して結合する |
 | RIGHT JOIN | 右外部結合 | 右の行は強制的に全て表示する<br>条件に合わないものは、右テーブルに値が全てNULLである行を生成して結合する |
 | FULL JOIN | 完全外部結合 | 左右の全テーブルを全て表示させる |
+
+- [参照](https://qiita.com/ngron/items/db4947fb0551f21321c0)
+
+## 統合・集合
+sql语句
+```sql
+SELECT  列名  FROM  表名1
+UNION
+SELECT  列名  FROM  表名2
+```
+- UNION：重複を含めない（重複があったら除外）
+- UNION ALL：重複を含む（すべて抽出）
 
 # flutter的http通信
 
