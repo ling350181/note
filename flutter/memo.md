@@ -14,6 +14,7 @@
 - [ColumnやRowのtextDirectionでエラーが起きる](#ColumnやRowのtextDirectionでエラーが起きる)
 - [dialog里输入框点击就刷新问题](#dialog里输入框点击就刷新问题)
 - [local_notification的LateInitializationError](#local_notification的LateInitializationError)
+- [点击本地通知无法进行PageRoute](#点击本地通知无法进行PageRoute)
 
 # ExpansionPanel
 
@@ -426,3 +427,27 @@ tz.initializeTimeZones();
 TZDateTime scheduledDate = TZDateTime(
   local,dateTime.year,dateTime.month,dateTime.day,dateTime.hour,dateTime.minute);
 ```
+
+# 点击本地通知无法进行PageRoute
+
+## 问题
+使用本地通知用第三方插件flutter_localizations时，点击通知，无法进行进行页面跳转。
+
+## 原因
+flutter_localizations的onSelectNotification里回调
+```
+Navigator.of(context).push(MaterialPageRoute(...));
+```
+因为外包了多层的view。context失效。所以路由无效，无法进行页面跳转
+```dart
+  setOnNotificationClick(Function onNotificationClick) async {
+    await notificationsPlugin.initialize(initializationSettings, onSelectNotification:
+      (String payload) async{
+        onNotificationClick();
+      }
+    );
+  }
+```
+
+## 解决方法
+把回调写到顶级函数里
