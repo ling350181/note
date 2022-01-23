@@ -19,6 +19,7 @@
 - [Image](#Image)
 - [透明dailog](#透明dailog)
 - [NotificationListener](#NotificationListener)
+- [resizeToAvoidBottomInset](#resizeToAvoidBottomInset)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -928,3 +929,16 @@ class DialogRouter extends PageRouteBuilder{
 
 ## 参考
 https://qiita.com/youmeee/items/6ca30bf66646b1639076
+
+# resizeToAvoidBottomInset
+
+## resizeToAvoidBottomInsetとは
+簡単に言うと、キーボード、floating buttonなどのwidgetとbodyの重なりを防いでくれるもの。
+デフォルトではtrueで自動で重ならないようにしてくれている。
+
+## Padding、ViewPadding、ViewInsets
+- [DartPad](https://dartpad.dev/?id=b0d016329a88863670d9e9a8f0789245)
+
+```dart
+final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
+```
