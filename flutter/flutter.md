@@ -5,7 +5,7 @@
 - [flutter的http通信](#flutter的http通信)
 - [Provider状态管理](#Provider状态管理)
 - [Health](#Health)
-- [アプリの状態変化を監視・取得する方法](#アプリの状態変化を監視・取得する方法)
+- [app生命周期](#app生命周期)
 - [本地相册](#本地相册)
 - [图片压缩](#图片压缩)
 
@@ -584,7 +584,7 @@ Google Fitの取り込み
 <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
 ```
 
-# アプリの状態変化を監視・取得する方法
+# app生命周期
 
 ## 取得できるアプリの状態変化
 - detached
