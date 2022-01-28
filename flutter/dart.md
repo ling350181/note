@@ -567,6 +567,19 @@ Uint8List bytes = (await NetworkAssetBundle(Uri.parse(url)).load(url))
 base64Encode(bytes);
 ```
 
+## asset to BASE64
+```dart
+    // アセットからデータをロードする
+    final byteData = await rootBundle.load(assetPath);
+
+    // Uint8Listに変換
+    Uint8List imageBytes =
+        byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
+    // base64 code
+    return base64Encode(imageBytes);
+
+```
+
 # 时间
 
 ## DateFormat
