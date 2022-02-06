@@ -149,9 +149,10 @@ AWS AppSync のGraphQLを利用します。AWS AppSync で構築された GraphQ
     AWSのAppSyncからスキーマで定義されているsubscriptionを選択し、実行すると、該当テーブルの変更を検知できる
 
     検知したデータは右のLOGSのところに表示される
-
-AWS AppSync>AWS AppSync API名>Queries
-
+    ```bash
+    AWS AppSync>AWS AppSync API名>Queries
+    ```
+    
 ## 2. IAM
 IAM形式とCognito user pools形式主な違いは認証形式です。
 
