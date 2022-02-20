@@ -28,6 +28,9 @@
 # AWS
 - [aws環境構築](./AWS/setup.md)
 
+# Node.js
+- [環境構築](./node/setup.md)
+
 # git
 - [git](./git/git.md)
 - [git command](https://qiita.com/konweb/items/621722f67fdd8f86a017)
