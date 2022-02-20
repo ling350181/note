@@ -60,6 +60,15 @@
     lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom | while read i; do sudo rm /usr/local/${i}; done$ sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*
     ~~~
 
+- ソース版の場合
+
+    node実行ファイルの存在場所を確認し、ファイル削除。
+    ~~~
+    $ which node
+    /usr/local/bin/node
+    $ rm -rf /usr/local/bin/node \
+    >     node_modules
+    ~~~
 - 確認
 
     下記のコマンドで確認して、「command not found」が出て入ればOKです。  
