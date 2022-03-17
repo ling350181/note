@@ -84,7 +84,7 @@ warnning出ていたら、下記記事を参照に環境変数を設定する
     ```bash
     C:¥Users¥xxxxx¥flutter¥bin  ->   C¥Users¥xxxxx¥fvm¥default¥bin
     ```
-  上記の手順で設定終わったら、flutter --versionで確認すると、設定したバージョンになっていることを確認できます。
+  上記の手順で設定終わったら、flutter --versionで確認すると、設定したバージョンになっていることを確認できます。(PCの再起動が必要の時がある)
 
 
 ## makefileでバージョン管理
