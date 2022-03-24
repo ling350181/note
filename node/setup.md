@@ -37,6 +37,29 @@
     nodebrew use v10.15.0
     ~~~
 
+## Warning
+~~~
+nodebrew intall v16.3.0
+~~~
+上記のコマンドでnode.jsをインストールする際、warning出ました。
+~~~
+% nodebrew install 16.3.0
+Fetching: https://nodejs.org/dist/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz
+Warning: Failed to create the file 
+Warning: /Users/****/.nodebrew/src/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz: 
+Warning: No such file or directory
+curl: (23) Failure writing output to destination
+
+download failed: https://nodejs.org/dist/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz
+~~~
+
+ディレクトリが無いと怒られるので、mkdir をしてから再挑戦。
+~~~
+mkdir ~/.nodebrew
+mkdir ~/.nodebrew/src
+nodebrew intall v16.3.0
+~~~
+
 ## バージョン確認
 - 現在のバージョンを確認する
     ~~~
