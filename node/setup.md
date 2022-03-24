@@ -37,29 +37,41 @@
     nodebrew use v10.15.0
     ~~~
 
-## Warning
-~~~
-nodebrew intall v16.3.0
-~~~
-上記のコマンドでnode.jsをインストールする際、warning出ました。
-~~~
-% nodebrew install 16.3.0
-Fetching: https://nodejs.org/dist/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz
-Warning: Failed to create the file 
-Warning: /Users/****/.nodebrew/src/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz: 
-Warning: No such file or directory
-curl: (23) Failure writing output to destination
+## Trouble
+- nodejsインストールできない
+    ~~~
+    nodebrew intall v16.3.0
+    ~~~
+    上記のコマンドでnode.jsをインストールする際、warning出ました。
+    ~~~
+    % nodebrew install 16.3.0
+    Fetching: https://nodejs.org/dist/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz
+    Warning: Failed to create the file 
+    Warning: /Users/****/.nodebrew/src/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz: 
+    Warning: No such file or directory
+    curl: (23) Failure writing output to destination
 
-download failed: https://nodejs.org/dist/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz
-~~~
+    download failed: https://nodejs.org/dist/v16.3.0/node-v16.3.0-darwin-arm64.tar.gz
+    ~~~
 
-ディレクトリが無いと怒られるので、mkdir をしてから再挑戦。
-~~~
-mkdir ~/.nodebrew
-mkdir ~/.nodebrew/src
-nodebrew intall v16.3.0
-~~~
-
+    ディレクトリが無いと怒られるので、mkdir をしてから再挑戦。
+    ~~~
+    mkdir ~/.nodebrew
+    mkdir ~/.nodebrew/src
+    nodebrew intall v16.3.0
+    ~~~
+- amplifyコマンドnot found
+    
+    For mac and linux
+    ~~~
+    curl -sL https://aws-amplify.github.io/amplify-cli/install | bash && $SHELL
+    ~~~
+    For windows
+    ~~~
+    curl -sL https://aws-amplify.github.io/amplify-cli/install-win -o install.cmd && install.cmd
+    ~~~
+    ## 参考サイト
+    https://docs.amplify.aws/start/getting-started/installation/q/integration/js/#option-1-watch-the-video-guide
 ## バージョン確認
 - 現在のバージョンを確認する
     ~~~
