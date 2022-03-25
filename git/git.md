@@ -44,6 +44,17 @@ git submodule add https://github.com/ling350181/flutter_customize_calendar.git
 git submodule deinit -f flutter_customize_calendar
 git rm -f flutter_customize_calendar   
 ```
+
+- submodule clone
+
+包含submodule的库clone的时候加一个option --recursive
+~~~
+git clone https://*******.git --recursive
+~~~
+--recursive忘记加了的情况可以用下列的command取得
+~~~
+git submodule update --init
+~~~
 # 复原文件
 
 - 取commit id
