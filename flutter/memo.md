@@ -16,6 +16,7 @@
 - [local_notification的LateInitializationError](#local_notification的LateInitializationError)
 - [点击本地通知无法进行PageRoute](#点击本地通知无法进行PageRoute)
 - [Target of URI hasn't been generated.'serializers.g.dart'](#serializers生成错误)
+- [运行pod install时CocoaPods install失败](CocoaPods构建失败)
 
 # ExpansionPanel
 
@@ -462,4 +463,61 @@ Try running the generator that will generate the file referenced by the URI.```
 可以用以下代码解决
 ~~~
 flutter packages pub run build_runner build --delete-conflicting-outputs
+~~~
+
+# CocoaPods构建失败
+ios构建时报错。CocoaPods install失败
+~~~
+Running pod install...
+CocoaPods' output:
+    Analyzing dependencies
+
+    Inspecting targets to integrate
+      Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``)
+
+    Fetching external sources
+    -> Fetching podspec for `Flutter` from `.symlinks/flutter/ios`
+    -> Fetching podspec for `flutter_plugin` from `.symlinks/plugins/flutter_plugin/ios`
+
+    Resolving dependencies of `Podfile`
+
+    Comparing resolved specification to the sandbox manifest
+      A Flutter
+      A flutter_plugin
+
+    Downloading dependencies
+
+    -> Installing Flutter (1.0.0)
+
+    -> Installing flutter_plugin (0.0.1)
+      - Running pre-install hooks
+    [!] Unable to determine Swift version for the following pods:
+
+    - `flutter_plugin` does not specify a Swift version and none of the targets (`Runner`) integrating it has the `SWIFT_VERSION` attribute set. Please contact the author or set the `SWIFT_VERSION` attribute in at least one of the targets that integrate this pod.
+
+    /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.6.1/lib/cocoapods/installer/xcode/target_validator.rb:115:in `verify_swift_pods_swift_version'
+    /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.6.1/lib/cocoapods/installer/xcode/target_validator.rb:37:in `validate!'
+    /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.6.1/lib/cocoapods/installer.rb:459:in `validate_targets'
+    /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.6.1/lib/cocoapods/installer.rb:138:in `install!'
+    /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.6.1/lib/cocoapods/command/install.rb:48:in `run'
+    /Library/Ruby/Gems/2.3.0/gems/claide-1.0.2/lib/claide/command.rb:334:in `run'
+    /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.6.1/lib/cocoapods/command.rb:52:in `run'
+    /Library/Ruby/Gems/2.3.0/gems/cocoapods-1.6.1/bin/pod:55:in `<top (required)>'
+    /usr/local/bin/pod:22:in `load'
+    /usr/local/bin/pod:22:in `<main>'
+~~~
+
+## 解决方案
+通过将flutter和CocoaPods更新到最新版本然后运行以下命令来修复
+~~~
+flutter clean
+rm -Rf ios/Pods
+rm -Rf ios/.symlinks
+rm -Rf ios/Flutter/Flutter.framework
+rm -Rf ios/Flutter/Flutter.podspec
+~~~
+对于Apple M1芯片，只需卸载所有已cocoapods安装的gem，然后尝试安装brew。
+~~~
+sudo gem uninstall cocoapods
+brew install cocoapods
 ~~~
