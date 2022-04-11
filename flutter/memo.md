@@ -15,6 +15,7 @@
 - [dialog里输入框点击就刷新问题](#dialog里输入框点击就刷新问题)
 - [local_notification的LateInitializationError](#local_notification的LateInitializationError)
 - [点击本地通知无法进行PageRoute](#点击本地通知无法进行PageRoute)
+- [Target of URI hasn't been generated.'serializers.g.dart'](#serializers生成错误)
 
 # ExpansionPanel
 
@@ -451,3 +452,14 @@ Navigator.of(context).push(MaterialPageRoute(...));
 
 ## 解决方法
 把回调写到顶级函数里
+
+# serializers生成错误
+open api自动生成的时候出现下面的错误
+~~~
+Target of URI hasn't been generated: 'serializers.g.dart'.> Documentation
+Try running the generator that will generate the file referenced by the URI.```
+~~~
+可以用以下代码解决
+~~~
+flutter packages pub run build_runner build --delete-conflicting-outputs
+~~~
