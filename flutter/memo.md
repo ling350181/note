@@ -16,7 +16,7 @@
 - [local_notification的LateInitializationError](#local_notification的LateInitializationError)
 - [点击本地通知无法进行PageRoute](#点击本地通知无法进行PageRoute)
 - [Target of URI hasn't been generated.'serializers.g.dart'](#serializers生成错误)
-- [运行pod install时CocoaPods install失败](CocoaPods构建失败)
+- [运行pod install时CocoaPods install失败](#CocoaPods构建失败)
 
 # ExpansionPanel
 
