@@ -5,6 +5,7 @@
 - [List和Map的clone](#List和Map的clone)
 - [Map](#Map)
 - [foreach的Future](#foreach的Future)
+- [break和continue](#break和continue)
 - [数组操作方法](#数组操作方法)
 - [扩展运算符(...)](#扩展运算符)
 - [Future、Isolate和事件循环](#Future、Isolate和事件循环)
@@ -318,6 +319,65 @@ await Future.forEach(list,(String a)async{
 });
 ```
 
+# break和continue
+- break
+  ```dart
+  void main() {
+    for (var i = 0; i < 4; i++) {
+      if (i == 3) {
+        break;
+      }
+      print(i);
+    }
+    print('ループから脱出');
+  }
+
+  //出力
+  //0
+  //1
+  //2
+  //ループから脱出
+  ```
+  break文が実行されれば1番近い階層のループ処理が直ちに終了します。
+- continue
+  ```dart
+  void main() {
+    for (var i = 0; i < 5; i++) {
+      if (i % 2 == 0) {
+        continue;
+     }
+      print(i);
+    }
+    print('ループから脱出');
+  }
+
+  //出力
+  //1
+  //3
+  //ループから脱出
+  ```
+  continue文が実行されると直ちに次のループ処理に移ります。
+- return
+  - 普通関数の条件を満たすところから処理をスキップする
+  - foreachループでは処理はcontinueと同じ
+    ```dart
+    void main() {
+      List list = [1,2,3,4,5];
+      list.forEach((e){
+        if(e == 2){
+          return;
+        }
+        print(e);
+      });
+    }
+
+    //出力
+    //1
+    //3
+    //4
+    //5
+    ```
+    
 # 数组操作方法
 - [参考](https://www.jianshu.com/p/1c7d828b1153)
 
