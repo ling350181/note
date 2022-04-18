@@ -27,7 +27,7 @@
     - [实时通讯](./flutter/AWS/real_time.md)
 
 # AWS
-- [aws環境構築](./AWS/setup.md
+- [aws環境構築](./AWS/setup.md)
 - [CORS有効化](./AWS/cors.md)
 
 # Node.js
