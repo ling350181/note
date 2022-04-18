@@ -20,6 +20,7 @@
 - [透明dailog](#透明dailog)
 - [NotificationListener](#NotificationListener)
 - [resizeToAvoidBottomInset](#resizeToAvoidBottomInset)
+- [关于BoxConstraints的布局](#关于BoxConstraints的布局)
 
 # ExpansionPanelList
 - [中文教程](https://www.jianshu.com/p/ee9aa62caaee)
@@ -942,3 +943,6 @@ https://qiita.com/youmeee/items/6ca30bf66646b1639076
 ```dart
 final bottomSpace = MediaQuery.of(context).viewInsets.bottom;
 ```
+
+# 关于BoxConstraints的布局
+https://qiita.com/ling350181/items/9e927826f1164c9205b1
