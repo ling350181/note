@@ -9,6 +9,7 @@
 - [Row和Column](#Row和Column)
 - [ScrollPhysics详细](#ScrollPhysics详细)
 - [Wrap](#Wrap)
+- [Stack](#Stack)
 - [圆角的组件ClipRRect](#圆角的组件ClipRRect)
 - [CircleAvatar](#CircleAvatar)
 - [StickyHeader](#StickyHeader)
@@ -292,6 +293,9 @@ decoration: new UnderlineTabIndicator(
   insets: EdgeInsets.fromLTRB(0,0,0,10)
 ),
 ```
+
+# Stack
+https://qiita.com/ling350181/items/f5719272a516889bd3bb
 
 # 圆角的组件ClipRRect
 
