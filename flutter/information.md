@@ -4,6 +4,7 @@
 - [安卓版本发布](#安卓版本发布)
 - [flutter SDK channel](#flutter频道)
 - [iOS证书配置](#iOS证书配置)
+- [dart-defineでFlutterアプリのFirebase開発環境と本番環境を使い分ける](#Firebase開発環境と本番環境の使い分け)
 
 
 # 创建flutter项目
@@ -170,3 +171,9 @@ flutter upgrade
 
 # iOS证书配置
 https://www.jianshu.com/notifications
+
+# Firebase開発環境と本番環境の使い分け
+- ios
+  - https://qiita.com/tetsufe/items/3f2257ac12f812d3f2d6
+- Android
+  - https://qiita.com/tetsufe/items/29cc779592171dcfb7aa
