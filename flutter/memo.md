@@ -17,6 +17,7 @@
 - [点击本地通知无法进行PageRoute](#点击本地通知无法进行PageRoute)
 - [Target of URI hasn't been generated.'serializers.g.dart'](#serializers生成错误)
 - [运行pod install时CocoaPods install失败](#CocoaPods构建失败)
+- [Scrollbar的错误](#Scrollbar的错误)
 
 # ExpansionPanel
 
@@ -521,3 +522,30 @@ rm -Rf ios/Flutter/Flutter.podspec
 sudo gem uninstall cocoapods
 brew install cocoapods
 ~~~
+
+# Scrollbar的错误
+错误信息
+~~~
+The Scrollbar’s ScrollController has no ScrollPosition attached.
+~~~
+
+## 解决方案
+https://github.com/flutter/flutter/issues/97873#issuecomment-1048677475
+```dart
+...
+child: ScrollConfiguration(
+          behavior: HorizontalScrollBehaviour(),
+          child: ListView.builder(
+              shrinkWrap: true,
+              controller: _controller,
+              scrollDirection: Axis.horizontal,
+
+...
+class HorizontalScrollBehaviour extends ScrollBehavior{
+
+  @override
+  Widget buildScrollbar(BuildContext context, Widget child, ScrollableDetails details) {
+    return Scrollbar(child: child, controller: details.controller, thumbVisibility: true);
+  }
+}
+```
