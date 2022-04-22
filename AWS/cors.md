@@ -12,6 +12,8 @@
             ![cors](cors.png)
     - コンソールで提供された値 '*' を [Access-Control-Allow-Origin] ヘッダー値として使用してすべてのオリジンからのアクセスリクエストを許可するか、リソースへのアクセスを許可するオリジンを指定します。
     - [CORS を有効にして既存の CORS ヘッダーを置換] を選択します。
+6. リソースで CORS サポートを有効にした後、新しい設定を有効にするには API をデプロイまたは再デプロイする必要があります。
+    ![depoly1](depoly1.png)![depoly2](depoly2.png)
 
 # 参考
 https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/how-to-cors-console.html
