@@ -367,6 +367,45 @@ SimpleLocalizations(Locale(langageCode)).title;
 ```sql
 CREATE TABLE テーブル名(カラム名 PRIMARY KEY, ...);
 ```
+## 演算子
+- A = B（A と B が等しい）
+- A <> B（A と B が等しくない）
+- A > B（A より B が小さい）
+- A < B（A より B が大きい）
+- A >= B（A が B 以上）
+- A <= B（A が B 以下）
+- IS NULL
+
+「IS NULL演算子」とは、その名の通り「NULLかどうかをチェックしてくれる演算子」です。主に「WHERE」の中の判定文の中で使用されます。
+
+逆の場合はIS NOT NULL
+~~~
+SELECT * FROM user WHERE name IS NULL;
+SELECT * FROM user WHERE name IS NOT NULL;
+~~~
+- [A] BETWEEN [B] AND [C]
+
+BETWEEN は [A] が [B] <= [A] <= [C] であった時に True を返す論理演算子です。
+- [A] LIKE [パターン]
+~~~
+SELECT  *
+FROM    Customers
+WHERE   LastName LIKE '%yama%';
+~~~
+- [A] IN ([B], [C], ..)
+- AND,OR
+- EXISTS (サブクエリー)
+
+EXISTS は、続くサブクエリが行を含む場合に True を返す論理演算子です。
+~~~
+SELECT  *
+FROM    Customers AS C
+WHERE   EXISTS
+        (SELECT *
+         FROM   Orders AS O
+         WHERE  O.CustomerID = C.CustomerID
+            	AND O.StoreCity = C.AddressCity);
+~~~
 
 ## 升顺和降顺
 - ASC...升顺
