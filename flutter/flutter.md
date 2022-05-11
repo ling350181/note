@@ -353,6 +353,7 @@ SimpleLocalizations(Locale(langageCode)).title;
 
     - [sql基本类](#sql基本类)
     - [创建TABLE](#创建TABLE)
+    - [演算子](#演算子)
     - [升顺和降顺](#升顺和降顺)
     - [主key](#主key)
     - [結合](#結合)
