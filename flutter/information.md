@@ -110,7 +110,17 @@ fvm config --cache-path "C:\dev\flutter\versions"
 # コンフィグを確認
 fvm config
 ```
-
+## トラブルシューティング
+fvm globalでバージョン切り替えるとき、下記のエラーが出ることがあります。
+~~~
+Can't load Kernel binary: Invalid kernel binary format version.
+Could not find a file named "pubspec.yaml" in "/Users/xxxxx/.pub-cache/hosted/pub.dartlang.org/fvm-2.3.1".
+~~~
+解決策
+```bash
+flutter pub global activate fvm
+```
+上記のコマンドでfvmをアップデートします。
 # app名字本地化
 
 ## ios
