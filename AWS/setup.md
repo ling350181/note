@@ -46,3 +46,22 @@ output=json
 ~~~
 aws configure list
 ~~~
+
+## 名前付きプロファイル
+名前付きのプロファイル作成は下記コマンド
+~~~
+aws configure --profile user1
+~~~
+
+## 名前を指定されたプロファイルを使用
+- LinuxまたはmacOS
+~~~
+export AWS_PROFILE=user1
+~~~
+- Windows
+~~~
+setx AWS_PROFILE user1
+~~~
+
+## 参考
+https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-profiles.html
